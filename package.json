@@ -1,0 +1,25 @@
+{
+  "name": "lentefeest",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server/app.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/minestarnl/lentefeest.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/minestarnl/lentefeest/issues"
+  },
+  "homepage": "https://github.com/minestarnl/lentefeest#readme",
+  "dependencies": {
+    "node-media-server": "^2.1.2"
+  }
+}

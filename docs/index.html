@@ -5,27 +5,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Lentefeest | Stream</title>
-    <link rel="stylesheet" href="../plyr/plyr.css">
+    <title>Lentefeest Streams</title>
+    <!-- <link rel="stylesheet" href="https://cdn.plyr.io/3.5.6/plyr.css" /> -->
 </head>
 
 <body>
-    <script src="https://cdn.bootcss.com/flv.js/1.5.0/flv.min.js"></script>
-    <video id="videoElement"></video>
+    <script src="js/flv.min.js"></script>
+    <video id="videoElement" controls autoplay style="width: 100%; height: 100%"></video>
     <script>
         if (flvjs.isSupported()) {
             var videoElement = document.getElementById('videoElement');
             var flvPlayer = flvjs.createPlayer({
                 type: 'flv',
-                url: 'ws://localhost:8000/live/STREAM_NAME.flv'
+                live: true,
+                url: 'http://lentefeest.bramkoene.nl:8000/live/lentefeest.flv'
             });
             flvPlayer.attachMediaElement(videoElement);
             flvPlayer.load();
             flvPlayer.play();
         }
     </script>
-    <script src="../plyr/plyr.min.js"></script>
-    <script src="../js/stream.js"></script>
 </body>
 
 </html>

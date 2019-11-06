@@ -7,6 +7,7 @@
 <script>
 import videojs from "video.js";
 import "videojs-flash";
+import "@videojs/http-streaming";
 
 export default {
   name: "VideoPlayer",

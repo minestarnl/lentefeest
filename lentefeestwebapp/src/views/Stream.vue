@@ -18,11 +18,10 @@ export default {
         autoplay: true,
         controls: true,
         liveui: true,
-        techOrder: ["flash", "html5"],
+        techOrder: ["html5", "flash"],
         sources: [
           {
-            src:
-              "http://lentefeest.bramkoene.nl:8000/live/lentefeest/index.m3u8",
+            src: "https://lentefeest.bramkoene.nl/live/lentefeest/index.m3u8",
             type: "application/x-mpegURL"
           }
         ]

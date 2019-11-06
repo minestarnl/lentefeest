@@ -18,5 +18,8 @@
   "bugs": {
     "url": "https://github.com/minestarnl/lentefeest/issues"
   },
-  "homepage": "https://github.com/minestarnl/lentefeest#readme"
+  "homepage": "https://github.com/minestarnl/lentefeest#readme",
+  "dependencies": {
+    "@videojs/http-streaming": "^1.10.6"
+  }
 }

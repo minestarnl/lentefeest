@@ -20,6 +20,15 @@
             <v-list-item-title>{{ item.title }}</v-list-item-title>
           </v-list-item-content>
         </v-list-item>
+        <v-list-item key="google" tap="loginWithGoogle" @click="loginWithGoogle">
+          <v-list-item-icon>
+            <v-icon>'mdi-google'</v-icon>
+          </v-list-item-icon>
+
+          <v-list-item-content>
+            <v-list-item-title>Login</v-list-item-title>
+          </v-list-item-content>
+        </v-list-item>
       </v-list>
     </v-navigation-drawer>
     <v-app-bar app color="primary" dark>
@@ -40,6 +49,7 @@
 
 <script lang="ts">
 import Vue from "vue";
+import router from "./router/index";
 
 export default Vue.extend({
   name: "App",
@@ -55,6 +65,27 @@ export default Vue.extend({
       ],
       right: null
     };
+  },
+
+  methods: {
+    loginWithGoogle() {
+      var LoginString: string = `https://accounts.google.com/o/oauth2/auth?
+client_id=73713534571-7d72icncvsacbo2lipfipv13bj21tmiv.apps.googleusercontent.com&
+redirect_uri=http://localhost:8080/logincallback&
+scope=https://www.googleapis.com/auth/youtube&state=${router.currentRoute.path}&
+response_type=token`;
+      window.open(LoginString);
+    }
+  },
+
+  computed: {
+    googleUrl: () => {
+      return `https://accounts.google.com/o/oauth2/auth?
+client_id=73713534571-7d72icncvsacbo2lipfipv13bj21tmiv.apps.googleusercontent.com&
+redirect_uri=${router.currentRoute.fullPath}/logincallback&
+scope=https://www.googleapis.com/auth/youtube&state=${router.currentRoute.path}&
+response_type=token`;
+    }
   },
 
   watch: {

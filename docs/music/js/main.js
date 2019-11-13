@@ -9,20 +9,21 @@ var songs = [{
         "Dans/Dans/Dans '18/LF18 Dark Woods (Part I).mp3"
     ]
 }, ]
-document.querySelector("#player").addEventListener('ended', function() {
-    var audio = $("#player");
-    audio[0].pause();
+var player = document.querySelector("#player")
+player.addEventListener('ended', function() {
+    player.pause();
 });
 
+player.preload = 'auto'
+
 function change(sourceUrl) {
-    var audio = $("#player");
-    audio[0].pause();
+    player.pause();
     $("#mp3_src").attr("src", sourceUrl);
     /****************/
-    audio[0].load(); //suspends and restores all audio element
+    player.load(); //suspends and restores all audio element
 
-    //audio[0].play(); changed based on Sprachprofi's comment below
-    audio[0].oncanplaythrough = audio[0].play();
+    //player.play(); changed based on Sprachprofi's comment below
+    player.oncanplaythrough = player.play();
     /****************/
 }
 

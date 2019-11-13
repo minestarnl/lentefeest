@@ -9,6 +9,10 @@ var songs = [{
         "Dans/Dans/Dans '18/LF18 Dark Woods (Part I).mp3"
     ]
 }, ]
+document.querySelector("#player").addEventListener('ended', function() {
+    var audio = $("#player");
+    audio[0].pause();
+});
 
 function change(sourceUrl) {
     var audio = $("#player");

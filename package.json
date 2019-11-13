@@ -20,6 +20,9 @@
   },
   "homepage": "https://github.com/minestarnl/lentefeest#readme",
   "dependencies": {
-    "@videojs/http-streaming": "^1.10.6"
+    "@videojs/http-streaming": "^1.10.6",
+    "fast-xml-parser": "^3.14.0",
+    "firebase": "^7.3.0",
+    "request": "^2.88.0"
   }
 }

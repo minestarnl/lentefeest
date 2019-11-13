@@ -22,9 +22,7 @@ export default {
   name: "Stream",
   components: {},
   data() {
-    return {
-      hasEnteredPassword: false
-    };
+    return {};
   },
   computed: {
     stream: () => {

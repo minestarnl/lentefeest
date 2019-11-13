@@ -25,7 +25,6 @@
                 v-model="password"
               />
             </v-form>
-            <VTextField ref="warningMessage" dark class="warningmessage"></VTextField>
           </v-card-text>
           <v-card-actions>
             <v-spacer />

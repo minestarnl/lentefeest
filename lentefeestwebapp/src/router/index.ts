@@ -5,7 +5,7 @@ import Home from "../views/Home.vue";
 import Stream from "../views/Stream.vue";
 import LoginCallback from "../views/LoginCallback.vue";
 
-import Login from "../views/auth/login.vue";
+import Login from "../views/auth/account.vue";
 import Register from "../views/auth/register.vue";
 
 Vue.use(VueRouter);
@@ -27,8 +27,8 @@ const routes: any[] = [
     component: LoginCallback
   },
   {
-    path: "/login",
-    name: "Login",
+    path: "/account",
+    name: "Account",
     component: Login
   },
   {

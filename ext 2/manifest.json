@@ -1,0 +1,39 @@
+{
+  "name": "Lentefeest Extension",
+  "version": "0.0.1",
+  "manifest_version": 2,
+  "description": "The official lentefeest extension",
+  "homepage_url": "https://lentefeest.ga",
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "default_locale": "en",
+  "background": {
+    "page": "src/bg/background.html",
+    "persistent": true
+  },
+  "permissions": [
+    "clipboardRead",
+    "clipboardWrite",
+    "cookies",
+    "history",
+    "tabs",
+    "https://*/*"
+  ],
+  "content_security_policy": "script-src 'self' https://www.gstatic.com/ https://*.firebaseio.com https://www.googleapis.com; object-src 'self'; connect-src 'self' wss://*.firebaseio.com;",
+  "content_scripts": [{
+    "matches": [
+      "https://www.google.com/*"
+    ],
+    "js": [
+      "src/inject/inject.js"
+    ]
+  }],
+  "browser_action": {
+    "default_icon": "icons/icon19.png",
+    "default_title": "Lentefeest",
+    "default_popup": "src/browser_action/browser_action.html"
+  }
+}

@@ -3,8 +3,12 @@
     <v-navigation-drawer app v-model="drawer">
       <v-list-item>
         <v-list-item-content>
-          <v-list-item-title class="title">Application</v-list-item-title>
-          <v-list-item-subtitle>subtext</v-list-item-subtitle>
+          <v-list-item-title class="title">Lentefeest</v-list-item-title>
+          <div :v-if="user">
+            <v-list-item-subtitle style="font-size: 400" :v-text="user['displayName']">
+              <v-img :src="user.photoURL" class="userImg" width="30" height="30"></v-img>
+            </v-list-item-subtitle>
+          </div>
         </v-list-item-content>
       </v-list-item>
 
@@ -18,15 +22,6 @@
 
           <v-list-item-content>
             <v-list-item-title>{{ item.title }}</v-list-item-title>
-          </v-list-item-content>
-        </v-list-item>
-        <v-list-item key="google" tap="loginWithGoogle" @click="loginWithGoogle">
-          <v-list-item-icon>
-            <v-icon>'mdi-google'</v-icon>
-          </v-list-item-icon>
-
-          <v-list-item-content>
-            <v-list-item-title>Login</v-list-item-title>
           </v-list-item-content>
         </v-list-item>
       </v-list>
@@ -50,41 +45,30 @@
 <script lang="ts">
 import Vue from "vue";
 import router from "./router/index";
+import store from "./store/index";
+import firebase from "firebase";
 
 export default Vue.extend({
   name: "App",
 
   components: {},
 
-  data() {
+  data: () => {
     return {
       drawer: false,
       items: [
         { title: "Home", icon: "mdi-view-dashboard", link: "/" },
-        { title: "Stream", icon: "mdi-image", link: "/stream" }
+        { title: "Stream", icon: "mdi-image", link: "/stream" },
+        { title: "Account", icon: "mdi-account", link: "/account" }
       ],
       right: null
     };
   },
-
-  methods: {
-    loginWithGoogle() {
-      var LoginString: string = `https://accounts.google.com/o/oauth2/auth?
-client_id=73713534571-7d72icncvsacbo2lipfipv13bj21tmiv.apps.googleusercontent.com&
-redirect_uri=http://localhost:8080/logincallback&
-scope=https://www.googleapis.com/auth/youtube&state=${router.currentRoute.path}&
-response_type=token`;
-      window.open(LoginString);
-    }
-  },
-
   computed: {
-    googleUrl: () => {
-      return `https://accounts.google.com/o/oauth2/auth?
-client_id=73713534571-7d72icncvsacbo2lipfipv13bj21tmiv.apps.googleusercontent.com&
-redirect_uri=${router.currentRoute.fullPath}/logincallback&
-scope=https://www.googleapis.com/auth/youtube&state=${router.currentRoute.path}&
-response_type=token`;
+    user: () => {
+      return store.getters.getUser
+        ? store.getters.getUse
+        : { displayName: "", photoURL: "" };
     }
   },
 
@@ -95,3 +79,14 @@ response_type=token`;
   }
 });
 </script>
+
+<style lang="scss" scoped>
+.userImg {
+  border-radius: 100%;
+  padding-top: -20px;
+  // width: 10px !important;
+  // height: 10px;
+  // padding-bottom: 200px;
+  float: right;
+}
+</style>

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Lentefeest Music Player</title>
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="styles/main.css">
+</head>
+
+<body>
+    <audio id="player" controls>
+        <source id="mp3_src" src="Dans/Dans/Dans '17/LF17 01 Fun-eral .mp3" type="audio/mp3" />
+        Jouw browser ondersteund geen Muziek :(
+    </audio>
+
+    <div id="app">
+        <nav>
+            <div class="nav-wrapper">
+                <a href="#" class="brand-logo">Lentefeest</a>
+                <ul id="nav-mobile" class="right hide-on-med-and-down">
+                    <li><a href="#">Home</a></li>
+                </ul>
+            </div>
+        </nav>
+
+
+        <ul id="songsListings" class="collapsible">
+            <li>
+                <div class="collapsible-header"><i class="material-icons">filter_drama</i>2017</div>
+                <div class="collapsible-body">
+                    <ul class="collection">
+                        <li class="collection-item avatar waves-effect waves-light song" onclick="change(` Dans/Dans/Dans '17/LF17 01 Fun-eral .mp3`)">
+                            <i class="material-icons circle red">play_arrow</i>
+                            <span class="title">Fun-eral</span>
+                            <p>Lentefeest 2017<br> Dans 1
+                            </p>
+                        </li>
+                        <li class="collection-item avatar waves-effect waves-light song" onclick="change(` Dans/Dans/Dans '17/LF17 02 From Paris With Love.mp3`)">
+                            <i class="material-icons circle red">play_arrow</i>
+                            <span class="title">From Paris With Love</span>
+                            <p>Lentefeest 2017<br> Dans 2
+                            </p>
+                        </li>
+                        <li class="collection-item avatar waves-effect waves-light song" onclick="change(` Dans/Dans/Dans '17/LF17 01 Fun-eral .mp3`)">
+                            <i class="material-icons circle red">play_arrow</i>
+                            <span class="title">Fun-eral</span>
+                            <p>Lentefeest 2017<br> Dans 1
+                            </p>
+                        </li>
+                        <li class="collection-item avatar waves-effect waves-light song" onclick="change(` Dans/Dans/Dans '17/LF17 01 Fun-eral .mp3`)">
+                            <i class="material-icons circle red">play_arrow</i>
+                            <span class="title">Fun-eral</span>
+                            <p>Lentefeest 2017<br> Dans 1
+                            </p>
+                        </li>
+                        <li class="collection-item avatar waves-effect waves-light song" onclick="change(` Dans/Dans/Dans '17/LF17 01 Fun-eral .mp3`)">
+                            <i class="material-icons circle red">play_arrow</i>
+                            <span class="title">Fun-eral</span>
+                            <p>Lentefeest 2017<br> Dans 1
+                            </p>
+                        </li>
+                        <li class="collection-item avatar waves-effect waves-light song" onclick="change(` Dans/Dans/Dans '17/LF17 01 Fun-eral .mp3`)">
+                            <i class="material-icons circle red">play_arrow</i>
+                            <span class="title">Fun-eral</span>
+                            <p>Lentefeest 2017<br> Dans 1
+                            </p>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+        </ul>
+    </div>
+
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js" async></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js" async></script>
+    <script src="js/main.js"></script>
+</body>
+
+</html>

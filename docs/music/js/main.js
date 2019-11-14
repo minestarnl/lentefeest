@@ -10,7 +10,7 @@ var songs = [{
     ]
 }, ]
 var player = document.querySelector("#player")
-player.addEventListener('ended', function() {
+player.addEventListener('ended', function () {
     player.pause();
 });
 
@@ -27,17 +27,26 @@ function change(sourceUrl) {
     /****************/
 }
 
-document.addEventListener('DOMContentLoaded', function() {
-    var elems = document.querySelectorAll('.collapsible');
-    var instances = M.Collapsible.init(elems, {
-        // accordion: true
-    });
+var playListLink = document.querySelectorAll('.song')
+
+playListLink.forEach(link => {
+    //Playlist link clicked.
+    link.addEventListener("click", function (e) {
+        e.preventDefault();
+        var selectedTrack = parseInt(player.children[].getAttribute("data-track-row"));
+        
+    }, false);
+})
+
+
+$(document).ready(function () {
+    $('.collapsible').collapsible();
 });
 
 if (window.location.hash == '#dev') {
     var old = console.log;
     var logger = document.getElementById('log');
-    console.log = function(message) {
+    console.log = function (message) {
         if (typeof message == 'object') {
             logger.innerHTML += (JSON && JSON.stringify ? JSON.stringify(message) : message) + '<br />';
         } else {

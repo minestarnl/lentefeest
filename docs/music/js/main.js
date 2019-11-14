@@ -18,6 +18,7 @@ function change(sourceUrl) {
 
 $(document).ready(function() {
     $('.collapsible').collapsible();
+    $('.modal').modal();
 });
 
 if (window.location.hash == '#dev') {

@@ -15,18 +15,13 @@
 <body>
     <audio id="player" controls>
         <!-- 2014 -->
-        <source id="mp3_src" src="/Dans/Dans/Dans '14/LF 14 Laag 2 Rockmix.mp3" type="audio/mp3"
-            data-track-number="1" />
-        <source id="mp3_src" src="/Dans/Dans/Dans '14/LF14 Dance Crew Gevaarlijke jongens.mp3" type="audio/mp3"
-            data-track-number="2" />
-        <source id="mp3_src" src="/Dans/Dans/Dans '14/LF14 Laag 4 Jukebox Battle.mp3" type="audio/mp3"
-            data-track-number="3" />
+        <source id="mp3_src" src="Dans/Dans/Dans 2014/LF 14 Laag 2 Rockmix.mp3" type="audio/mp3" />
         Jouw browser ondersteund geen Muziek :(
     </audio>
 
     <div id="app">
         <nav>
-            <div class="nav-wrapper">
+            <div class="nav-wrapper purple darken-4">
                 <a href="#" class="brand-logo">Lentefeest</a>
                 <ul id="nav-mobile" class="right hide-on-med-and-down">
                     <li><a href="#">Home</a></li>
@@ -35,92 +30,18 @@
         </nav>
 
 
-        <ul id="songsListings" class="collapsible popout">
-            <li>
-                <div class="collapsible-header"><i class="material-icons">filter_drama</i>2017</div>
-                <div class="collapsible-body">
-                    <ul class="collection">
-                        <li class="collection-item avatar waves-effect waves-light song"
-                            onclick="change(` Dans/Dans/Dans '17/LF17 01 Fun-eral .mp3`)">
-                            <i class="material-icons circle red">play_arrow</i>
-                            <span class="title">Rockmix</span>
-                            <p>Lentefeest 2017<br> Dans 1
-                            </p>
-                        </li>
-                        <li class="collection-item avatar waves-effect waves-light song"
-                            onclick="change(` Dans/Dans/Dans '17/LF17 02 From Paris With Love.mp3`)">
-                            <i class="material-icons circle red">play_arrow</i>
-                            <span class="title">Gevaarlijke Jongens</span>
-                            <p>Lentefeest 2017<br> Dans 2
-                            </p>
-                        </li>
-                        <li class="collection-item avatar waves-effect waves-light song"
-                            onclick="change(` Dans/Dans/Dans '17/LF17 01 Fun-eral .mp3`)">
-                            <i class="material-icons circle red">play_arrow</i>
-                            <span class="title">Jukebox Battle</span>
-                            <p>Lentefeest 2017<br> Dans 1
-                            </p>
-                        </li>
-                    </ul>
-                </div>
-            </li>
-            <li>
-                <div class="collapsible-header"><i class="material-icons">filter_drama</i>2017</div>
-                <div class="collapsible-body">
-                    <ul class="collection">
-                        <li class="collection-item avatar waves-effect waves-light song"
-                            onclick="change(` Dans/Dans/Dans '17/LF17 01 Fun-eral .mp3`)">
-                            <i class="material-icons circle red">play_arrow</i>
-                            <span class="title">Fun-eral</span>
-                            <p>Lentefeest 2017<br> Dans 1
-                            </p>
-                        </li>
-                        <li class="collection-item avatar waves-effect waves-light song"
-                            onclick="change(` Dans/Dans/Dans '17/LF17 02 From Paris With Love.mp3`)">
-                            <i class="material-icons circle red">play_arrow</i>
-                            <span class="title">From Paris With Love</span>
-                            <p>Lentefeest 2017<br> Dans 2
-                            </p>
-                        </li>
-                        <li class="collection-item avatar waves-effect waves-light song"
-                            onclick="change(` Dans/Dans/Dans '17/LF17 01 Fun-eral .mp3`)">
-                            <i class="material-icons circle red">play_arrow</i>
-                            <span class="title">Fun-eral</span>
-                            <p>Lentefeest 2017<br> Dans 1
-                            </p>
-                        </li>
-                        <li class="collection-item avatar waves-effect waves-light song"
-                            onclick="change(` Dans/Dans/Dans '17/LF17 01 Fun-eral .mp3`)">
-                            <i class="material-icons circle red">play_arrow</i>
-                            <span class="title">Fun-eral</span>
-                            <p>Lentefeest 2017<br> Dans 1
-                            </p>
-                        </li>
-                        <li class="collection-item avatar waves-effect waves-light song"
-                            onclick="change(` Dans/Dans/Dans '17/LF17 01 Fun-eral .mp3`)">
-                            <i class="material-icons circle red">play_arrow</i>
-                            <span class="title">Fun-eral</span>
-                            <p>Lentefeest 2017<br> Dans 1
-                            </p>
-                        </li>
-                        <li class="collection-item avatar waves-effect waves-light song"
-                            onclick="change(` Dans/Dans/Dans '17/LF17 01 Fun-eral .mp3`)">
-                            <i class="material-icons circle red">play_arrow</i>
-                            <span class="title">Fun-eral</span>
-                            <p>Lentefeest 2017<br> Dans 1
-                            </p>
-                        </li>
-                    </ul>
-                </div>
-            </li>
+        <ul id="songsListings" class="collapsible popout accordion">
+            <noscript>
+                Please enable javascript to work
+            </noscript>
         </ul>
 
 
         <div id="log"></div>
     </div>
     <!-- Compiled and minified JavaScript -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js" async></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js" async></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <script src="js/main.js"></script>
     <script src="js/generator.js"></script>
 </body>

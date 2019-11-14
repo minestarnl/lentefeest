@@ -35,10 +35,6 @@ const getSongs = (Year) => {
 }
 
 class Song {
-    link
-    year
-    name
-    number
     constructor(link, year, name, number) {
         this.link = link
         this.year = year
@@ -48,8 +44,6 @@ class Song {
 }
 
 class Year {
-    year
-    songs
     constructor(year) {
         this.year = year
         this.songs = []

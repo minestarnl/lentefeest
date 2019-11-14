@@ -35,28 +35,28 @@ const getSongs = (Year) => {
 }
 
 class Song {
-    link;
-    year;
-    name;
-    number;
+    link
+    year
+    name
+    number
     constructor(link, year, name, number) {
-        this.link = link;
-        this.year = year;
-        this.name = name;
-        this.number = number;
+        this.link = link
+        this.year = year
+        this.name = name
+        this.number = number
     }
 }
 
 class Year {
-    year;
-    songs;
+    year
+    songs
     constructor(year) {
-        this.year = year;
-        this.songs = [];
+        this.year = year
+        this.songs = []
     }
 
     addSong(song) {
-        this.songs.push(song);
+        this.songs.push(song)
         return this
     }
 }

@@ -14,6 +14,8 @@ function change(sourceUrl) {
     //player.play(); changed based on Sprachprofi's comment below
     player.oncanplaythrough = player.play();
     /****************/
+    console.log(player.duration)
+    changeTimes(player.duration)
 }
 
 $(document).ready(function() {

@@ -23,6 +23,9 @@
         <nav>
             <div class="nav-wrapper purple darken-4">
                 <a class="brand-logo modal-trigger" data-target="credits" href="#credits">Lentefeest</a>
+                <ul id="nav-mobile" class="right hide-on-med-and-down">
+                    <li><a href="#">Home</a></li>
+                </ul>
             </div>
         </nav>
 
@@ -33,6 +36,20 @@
             </noscript>
         </ul>
 
+
+        <div class="playerControls" style="display: none">
+            <i class="material-icons circle purple darken-4" onclick="playPause()">play_arrow</i>
+
+            <form action="#" class="progress-bar-spent">
+                <p class="range-field">
+                    <input type="range" id="test5" min="0" max="100" />
+                </p>
+            </form>
+
+            <div class="length">
+                <span class="length-spent">0:00</span> / <span class="length-total">0:00</span>
+            </div>
+        </div>
 
         <div id="log"></div>
     </div>
@@ -55,6 +72,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <script src="js/main.js"></script>
     <script src="js/generator.js"></script>
+    <script src="js/playercontrols.js"></script>
 
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-152630374-1"></script>

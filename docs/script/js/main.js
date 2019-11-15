@@ -1,5 +1,6 @@
 var superuser = false;
 var database = firebase.database();
+var elems;
 
 var scrollRef = firebase.database().ref('scroll');
 scrollRef.on('value', function (snapshot) {
@@ -24,6 +25,7 @@ $(function () {
                 if ($(`#${(elems_before[i-1])}`).prev().hasClass("c5")) break
                 elems_before.push($(`#${(elems_before[i-1])}`).prev().attr("id"))
             }
+
             var elems = elems_after.concat(elems_before)
             if (elems.length == 0) return
             firebase.database().ref().update({
@@ -44,17 +46,15 @@ $(function () {
 })
 
 function login() {
-    if (prompt("Wat is de geheime code niffo") == "analepoepseks") superuser = true, alert("Je bent nu superuser yay")
+    if (prompt("Wat is de geheime code niffo") == "analepoepseks") superuser = true, $("body").attr("loggedin", "true"), alert("Je bent nu superuser yay")
     else alert("HA REKT IS FOUT")
 }
 
 function scroll(val) {
     // if (superuser) return
-    var elems = val
+    elems = val
+    assignSelector()
     $(".c24 .selected").removeClass("selected")
-    elems.forEach(elem => {
-        $(`#${elem}`).addClass("selected")
-    })
     $('html, body').animate({
             scrollTop: ($(`#${elems[0]}`).offset().top - 200),
         },
@@ -67,3 +67,16 @@ function toggleTheme() {
     if ($("body").attr("theme") == "dark") $("body").attr("theme", "light")
     else $("body").attr("theme", "dark")
 }
+
+function assignSelector() {
+    var height = 0
+    elems.forEach(elem => {
+        height += $(`#${elem}`).height()
+        // $(`#${elem}`).addClass("selected")
+    })
+    $(".poep").css("top", ($(`#${elems[0]}`).offset().top - height + $(`#${elems[0]}`).height()))
+    $(".poep").css("left", ($(`#0`).offset().left - 20))
+    $(".poep").css("height", height)
+}
+
+$(window).on('resize', assignSelector);

@@ -27,11 +27,28 @@ body[theme="dark"] p {
     transition: background 400ms;
 }
 
+.poep {
+    position: absolute;
+    width: 5px;
+    background-color: rgb(106, 27, 154);
+    /* height: 30px; */
+    /* top: 50vh; */
+    /* left: calc(50vw - 20rem); */
+}
+
 .selected {
     /* outline: 5px solid rgb(106, 27, 154); */
     /* border-left: 5px solid rgb(106, 27, 154); */
     animation: blinker 1s linear infinite;
     box-shadow: -5px 0px 0px 0px rgb(106, 27, 154);
+}
+
+body[loggedin="true"] .c24 p {
+    cursor: pointer !important;
+}
+
+.c24 p {
+    cursor: not-allowed;
 }
 
 ol {

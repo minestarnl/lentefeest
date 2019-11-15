@@ -46,9 +46,16 @@ $(function () {
 })
 
 function login() {
-    if (prompt("Wat is de geheime code niffo") == "analepoepseks") superuser = true, $("body").attr("loggedin", "true"), alert("Je bent nu superuser yay")
-    else alert("HA REKT IS FOUT")
+    var password = prompt("Wat is de geheime code niffo")
+    firebase.auth().signInWithEmailAndPassword('superuser@lentefeest.ga', password).catch(error => {
+        console.log(error)
+        alert("HA REKT IS FOUT")
+    })
 }
+
+firebase.auth().onAuthStateChanged(function (user) {
+    if (user) alert("Je bent nu superuser yay"), $("body").attr("loggedin", "true")
+});
 
 function scroll(val) {
     // if (superuser) return

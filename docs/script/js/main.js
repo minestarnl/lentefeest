@@ -2,14 +2,14 @@ var superuser = false;
 var database = firebase.database();
 
 var scrollRef = firebase.database().ref('scroll');
-scrollRef.on('value', function (snapshot) {
+scrollRef.on('value', function(snapshot) {
     scroll(snapshot.val());
 });
 
-$(function () {
-    $(".c24 p").each(function (poep) {
+$(function() {
+    $(".c24 p").each(function(poep) {
         $(this).attr("id", poep)
-        $(this).click(function () {
+        $(this).click(function() {
             if (!superuser) return
 
             var elems_after = [$(this).attr("id")]
@@ -27,26 +27,37 @@ $(function () {
             var elems = elems_after.concat(elems_before)
             if (elems.length == 0) return
             firebase.database().ref().update({
-                scroll: elems
-            })
-            // $(".c24 .selected").removeClass("selected")
-            // elems.forEach(elem => {
-            //     $(`#${elem}`).addClass("selected")
-            // })
-            // $('html, body').animate({
-            //         scrollTop: ($(this).offset().top - 200),
-            //     },
-            //     200,
-            //     'linear'
-            // )
+                    scroll: elems
+                })
+                // $(".c24 .selected").removeClass("selected")
+                // elems.forEach(elem => {
+                //     $(`#${elem}`).addClass("selected")
+                // })
+                // $('html, body').animate({
+                //         scrollTop: ($(this).offset().top - 200),
+                //     },
+                //     200,
+                //     'linear'
+                // )
         });
     })
 })
 
 function login() {
-    if (prompt("Wat is de geheime code niffo") == "analepoepseks") superuser = true, alert("Je bent nu superuser yay")
-    else alert("HA REKT IS FOUT")
+    var password = prompt("Wat is de geheime code niffo")
+    firebase.auth().signInWithEmailAndPassword('superuser@lentefeest.ga', password).catch(error => {
+        console.log(error)
+        alert("HA REKT IS FOUT")
+    })
 }
+
+firebase.auth().onAuthStateChanged(function(user) {
+    if (user) {
+        alert("Je bent nu superuser yay")
+    } else {
+        // No user is signed in.
+    }
+});
 
 function scroll(val) {
     // if (superuser) return

@@ -14,19 +14,22 @@ $(function () {
             if (!superuser) return
 
             var elems_after = [$(this).attr("id")]
-            for (var i = 1; i < 5; i++) {
+            for (var i = 1; i < 100; i++) {
                 if ($(`#${(elems_after[i-1])}`).next().hasClass("c5")) break
                 elems_after.push($(`#${(elems_after[i-1])}`).next().attr("id"))
             }
             elems_after = elems_after.splice(1, 1)
 
             var elems_before = [$(this).attr("id")]
-            for (var i = 1; i < 5; i++) {
+            for (var i = 1; i < 100; i++) {
                 if ($(`#${(elems_before[i-1])}`).prev().hasClass("c5")) break
                 elems_before.push($(`#${(elems_before[i-1])}`).prev().attr("id"))
             }
 
             var elems = elems_after.concat(elems_before)
+
+
+
             if (elems.length == 0) return
             firebase.database().ref().update({
                 scroll: elems

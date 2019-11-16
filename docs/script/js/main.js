@@ -3,23 +3,23 @@ var database = firebase.database();
 var elems;
 
 var scrollRef = firebase.database().ref('scroll');
-scrollRef.on('value', function (snapshot) {
+scrollRef.on('value', function(snapshot) {
     scroll(snapshot.val());
 });
 
-$(function () {
+$(function() {
     if (location.hash == "#embed") {
 
         $(".navbar-fixed").hide()
         $("body").attr("embed", "true")
-        // $(".c24").css("background-color", "transparent")
-        // $(".c24").css("width", "20vw !important;")
-        // $(".c24").css("padding", "0px !important")
-        // $(".c24").css("margin", "0px !important")
+            // $(".c24").css("background-color", "transparent")
+            // $(".c24").css("width", "20vw !important;")
+            // $(".c24").css("padding", "0px !important")
+            // $(".c24").css("margin", "0px !important")
     }
-    $(".c24 p").each(function (poep) {
+    $(".c24 p").each(function(poep) {
         $(this).attr("id", poep)
-        $(this).click(function () {
+        $(this).click(function() {
             if (!superuser || location.hash == "#embed") return
 
             var elems_after = [$(this).attr("id")]
@@ -41,16 +41,16 @@ $(function () {
 
             if (elems.length == 0) return
             firebase.database().ref('scroll').set(elems)
-            // $(".c24 .selected").removeClass("selected")
-            // elems.forEach(elem => {
-            //     $(`#${elem}`).addClass("selected")
-            // })
-            // $('html, body').animate({
-            //         scrollTop: ($(this).offset().top - 200),
-            //     },
-            //     200,
-            //     'linear'
-            // )
+                // $(".c24 .selected").removeClass("selected")
+                // elems.forEach(elem => {
+                //     $(`#${elem}`).addClass("selected")
+                // })
+                // $('html, body').animate({
+                //         scrollTop: ($(this).offset().top - 200),
+                //     },
+                //     200,
+                //     'linear'
+                // )
         });
     })
 })
@@ -65,7 +65,7 @@ function login() {
     })
 }
 
-firebase.auth().onAuthStateChanged(function (user) {
+firebase.auth().onAuthStateChanged(function(user) {
     if (user)
         if (user.email == 'superuser@lentefeest.ga') { // Het moet zo anders geeft hij error als hij niet is ingelogd
             // alert("Je bent nu superuser yay")
@@ -96,7 +96,7 @@ function assignSelector() {
     var height = 0
     elems.forEach(elem => {
         height += $(`#${elem}`).height()
-        // $(`#${elem}`).addClass("selected")
+            // $(`#${elem}`).addClass("selected")
     })
     $(".poep").css("top", ($(`#${elems[0]}`).offset().top - height + $(`#${elems[0]}`).height()))
     $(".poep").css("left", ($(`#0`).offset().left - 20))

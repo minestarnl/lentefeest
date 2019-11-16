@@ -27,6 +27,31 @@ body[theme="dark"] p {
     transition: background 400ms;
 }
 
+body[embed="true"] {
+    width: calc(100vw - 30px) !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    overflow: hidden !important;
+}
+
+body[embed="true"] .c24 {
+    background-color: transparent !important;
+    width: calc(100vw - 30px) !important;
+    padding: 0 !important;
+    margin: 20px !important;
+    overflow: hidden !important;
+}
+
+body[embed="true"] span {
+    color: #e6e6e6;
+}
+
+body[embed="true"] * {
+    color: #e6e6e6;
+    font-size: large;
+}
+
+
 .poep {
     position: absolute;
     width: 5px;
@@ -64,18 +89,18 @@ table th {
 .c17 {
     border-right-style: solid;
     padding: 5pt 5pt 5pt 5pt;
-    border-bottom-color: #ffffff;
+    border-bottom-color: transparent;
     border-top-width: 1pt;
     border-right-width: 1pt;
-    border-left-color: #ffffff;
+    border-left-color: transparent;
     vertical-align: top;
-    border-right-color: #ffffff;
+    border-right-color: transparent;
     border-left-width: 1pt;
     border-top-style: solid;
     border-left-style: solid;
     border-bottom-width: 1pt;
     width: 353.2pt;
-    border-top-color: #ffffff;
+    border-top-color: transparent;
     border-bottom-style: solid
 }
 
@@ -150,7 +175,7 @@ table th {
 }
 
 .c2 {
-    background-color: #ffffff;
+    /* background-color: #ffffff; */
     padding-top: 0pt;
     padding-bottom: 0pt;
     line-height: 1.0;
@@ -344,9 +369,9 @@ table th {
     height: 57pt
 }
 
-.c25 {
+/* .c25 {
     background-color: #ffffff
-}
+} */
 
 .c13 {
     font-style: italic

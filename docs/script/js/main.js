@@ -3,14 +3,14 @@ var database = firebase.database();
 var elems;
 
 var scrollRef = firebase.database().ref('scroll');
-scrollRef.on('value', function (snapshot) {
+scrollRef.on('value', function(snapshot) {
     scroll(snapshot.val());
 });
 
-$(function () {
-    $(".c24 p").each(function (poep) {
+$(function() {
+    $(".c24 p").each(function(poep) {
         $(this).attr("id", poep)
-        $(this).click(function () {
+        $(this).click(function() {
             if (!superuser) return
 
             var elems_after = [$(this).attr("id")]
@@ -31,19 +31,17 @@ $(function () {
 
 
             if (elems.length == 0) return
-            firebase.database().ref().update({
-                scroll: elems
-            })
-            // $(".c24 .selected").removeClass("selected")
-            // elems.forEach(elem => {
-            //     $(`#${elem}`).addClass("selected")
-            // })
-            // $('html, body').animate({
-            //         scrollTop: ($(this).offset().top - 200),
-            //     },
-            //     200,
-            //     'linear'
-            // )
+            firebase.database().ref('scroll').update(elems)
+                // $(".c24 .selected").removeClass("selected")
+                // elems.forEach(elem => {
+                //     $(`#${elem}`).addClass("selected")
+                // })
+                // $('html, body').animate({
+                //         scrollTop: ($(this).offset().top - 200),
+                //     },
+                //     200,
+                //     'linear'
+                // )
         });
     })
 })
@@ -51,20 +49,22 @@ $(function () {
 function login() {
     if (prompt("Wat is de geheime code niffo") == "analepoepseks") superuser = true, $("body").attr("loggedin", "true"), alert("Je bent nu superuser yay")
     else alert("HA REKT IS FOUT")
-    // if (prompt("Wat is de geheime code niffo") == "analepoepseks") superuser = true, $("body").attr("loggedin", "true"), alert("Je bent nu superuser yay")
-    // else alert("HA REKT IS FOUT")
-    // var password = prompt("Wat is de geheime code niffo")
-    // firebase.auth().signInWithEmailAndPassword('superuser@lentefeest.ga', password).catch(error => {
-    //     console.log(error)
-    //     alert("HA REKT IS FOUT")
-    // })
+        // if (prompt("Wat is de geheime code niffo") == "analepoepseks") superuser = true, $("body").attr("loggedin", "true"), alert("Je bent nu superuser yay")
+        // else alert("HA REKT IS FOUT")
+        // var password = prompt("Wat is de geheime code niffo")
+        // firebase.auth().signInWithEmailAndPassword('superuser@lentefeest.ga', password).catch(error => {
+        //     console.log(error)
+        //     alert("HA REKT IS FOUT")
+        // })
 }
 
-firebase.auth().onAuthStateChanged(function (user) {
-    if (user) {
-        alert("Je bent nu superuser yay")
-        $("body").attr("loggedin", "true") // @BRAM DIT IS ALLEEN VOOR DE CURSOR!!!!!!!!!!!
-    }
+firebase.auth().onAuthStateChanged(function(user) {
+    if (user)
+        if (user.email == 'superuser@lentefeest.ga') { // Het moet zo anders geeft hij error als hij niet is ingelogd
+            alert("Je bent nu superuser yay")
+            $("body").attr("loggedin", "true") // @BRAM DIT IS ALLEEN VOOR DE CURSOR!!!!!!!!!!!
+            superuser = true
+        }
 });
 
 function scroll(val) {
@@ -89,7 +89,7 @@ function assignSelector() {
     var height = 0
     elems.forEach(elem => {
         height += $(`#${elem}`).height()
-        // $(`#${elem}`).addClass("selected")
+            // $(`#${elem}`).addClass("selected")
     })
     $(".poep").css("top", ($(`#${elems[0]}`).offset().top - height + $(`#${elems[0]}`).height()))
     $(".poep").css("left", ($(`#0`).offset().left - 20))

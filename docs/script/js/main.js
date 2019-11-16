@@ -31,7 +31,7 @@ $(function() {
 
 
             if (elems.length == 0) return
-            firebase.database().ref('scroll').update(elems)
+            firebase.database().ref('scroll').set(elems)
                 // $(".c24 .selected").removeClass("selected")
                 // elems.forEach(elem => {
                 //     $(`#${elem}`).addClass("selected")

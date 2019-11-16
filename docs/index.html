@@ -12,13 +12,14 @@
     <title>Lentefeest</title>
 </head>
 
-<body>
+<body onclick="$('.tap-target').tapTarget('close')">
     <div class="navbar-fixed">
         <nav>
             <div class="nav-wrapper purple darken-3">
                 <a href="#" class="brand-logo center">Lentefeest Stream</a>
                 <ul id="nav-mobile" class="right">
-                    <li><a onclick="login()"><i class="material-icons white-text">account_circle</i></a>
+                    <li><a id="loginButton" onclick="login()"><i
+                                class="material-icons white-text">account_circle</i></a>
                     </li>
                     <li><a onclick="toggleTheme()"><i class="material-icons white-text">lightbulb_outline</i></a>
                     </li>
@@ -31,6 +32,14 @@
         </nav>
     </div>
 
+    <!-- Tap Target Structure -->
+    <div class="tap-target" data-target="loginButton">
+        <div class="tap-target-content">
+            <h5>Als hij het niet doet</h5>
+            <p>Klik dan Hier :)</p>
+        </div>
+    </div>
+
     <div class="plyr__video-embed" id="player">
         <iframe src="https://www.youtube.com/embed/bTqVqk7FSmY?origin=https://plyr.io&amp;iv_load_policy=3&amp;modestbranding=1&amp;playsinline=1&amp;showinfo=0&amp;rel=0&amp;enablejsapi=1" allowfullscreen allowtransparency allow="autoplay"></iframe>
     </div>
@@ -38,6 +47,7 @@
     <script src="https://www.gstatic.com/firebasejs/7.4.0/firebase-database.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.4.0/firebase-auth.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <script src="https://cdn.plyr.io/3.5.6/plyr.js"></script>
     <script>
         var firebaseConfig = {
@@ -113,6 +123,14 @@
             if ($("body").attr("theme") == "dark") $("body").attr("theme", "light")
             else $("body").attr("theme", "dark")
         }
+
+        setTimeout(() => {
+            $('.tap-target').next()
+        }, 5000)
+
+        $(document).ready(function() {
+            $('.tap-target').tapTarget();
+        });
     </script>
 </body>
 

@@ -16,7 +16,7 @@
     <div class="navbar-fixed">
         <nav>
             <div class="nav-wrapper purple darken-3">
-                <a href="#" class="brand-logo center">Lentefeest Stream</a>
+                <a class="brand-logo center modal-trigger" data-target="credits" href="#credits">Lentefeest Stream</a>
                 <ul id="nav-mobile" class="right">
                     <li><a id="loginButton" onclick="login()"><i
                                 class="material-icons white-text">account_circle</i></a>
@@ -40,8 +40,22 @@
         </div>
     </div>
 
+    <!-- Modal Structure -->
+    <div id="credits" class="modal mybg">
+        <div class="modal-content">
+            <h4>About</h4>
+            <p>This is an website to listen to all the Kaj Munk College lentefeest music from the past years</p>
+            <p>Made by: <a href="https://github.com/minestarnl">Bram Koene</a></p>
+            <p>Design by: <a href="https://netlob.app/">Netlob</a> en <a href="https://materializecss.com/">Materialize
+                    css</a></p>
+        </div>
+        <div class="modal-footer mybg">
+            <a href="#!" class="modal-close waves-effect waves-green btn-flat">Close</a>
+        </div>
+    </div>
+
     <div class="plyr__video-embed" id="player">
-        <iframe src="https://www.youtube.com/embed/bTqVqk7FSmY?origin=https://plyr.io&amp;iv_load_policy=3&amp;modestbranding=1&amp;playsinline=1&amp;showinfo=0&amp;rel=0&amp;enablejsapi=1" allowfullscreen allowtransparency allow="autoplay"></iframe>
+        <iframe src="https://www.youtube.com/embed/bTqVqk7FSmY?origin=https://lentefeest.ga&amp;iv_load_policy=3&amp;modestbranding=1&amp;playsinline=1&amp;showinfo=0&amp;rel=0&amp;enablejsapi=1" allowfullscreen allowtransparency allow="autoplay"></iframe>
     </div>
     <script src="https://www.gstatic.com/firebasejs/7.4.0/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.4.0/firebase-database.js"></script>
@@ -122,6 +136,9 @@
         function toggleTheme() {
             if ($("body").attr("theme") == "dark") $("body").attr("theme", "light")
             else $("body").attr("theme", "dark")
+
+            if ($("#credits").attr("theme") == "dark") $("#credits").attr("theme", "light")
+            else $("#credits").attr("theme", "dark")
         }
 
         setTimeout(() => {
@@ -130,6 +147,10 @@
 
         $(document).ready(function() {
             $('.tap-target').tapTarget();
+        });
+
+        $(document).ready(function() {
+            $('.modal').modal();
         });
     </script>
 </body>

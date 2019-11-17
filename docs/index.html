@@ -66,19 +66,22 @@
             <h4>Account</h4>
             <p>You are currently not logged in</p>
             <br>
-            <div class="input-field col s12">
-                <select>
+            <form onsubmit="document.querySelector('#Account > div.modal-footer.mybg > a:nth-child(1)').click()">
+                <div class="input-field col s12">
+                    <select>
                   <option value="superuser@lentefeest.ga">Admin</option>
                   <option selected value="stream@lentefeest.ga">Stream</option>
                 </select>
-                <label>Account</label>
-            </div>
-            <div class="row">
-                <div class="input-field col s12">
-                    <input id="password" type="text" class="validate">
-                    <label for="password">Password</label>
+                    <label>Account</label>
                 </div>
-            </div>
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input id="password" type="text" class="validate">
+                        <label for="password">Password</label>
+                    </div>
+                </div>
+            </form>
+
         </div>
         <div class="modal-footer mybg">
             <a onclick="login()" class="modal-close waves-effect waves-green btn-flat bottom right">Login</a>
@@ -123,7 +126,7 @@
         function login() {
             // if (prompt("Wat is de geheime code niffo") == "analepoepseks") superuser = true, $("body").attr("loggedin", "true"), alert("Je bent nu superuser yay")
             // else alert("HA REKT IS FOUT")
-            var email = document.querySelector("#Account > div.modal-content > div.input-field.col.s12 > div > select").value;
+            var email = document.querySelector("#Account > div.modal-content > form > div.input-field.col.s12 > div > select").value;
             var password = document.querySelector("#password").value;
             document.querySelector("#password").value = null;
             firebase.auth().signInWithEmailAndPassword(email, password).catch(error => {

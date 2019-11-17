@@ -11,7 +11,11 @@
     <link rel="stylesheet" href="https://cdn.plyr.io/3.5.6/plyr.css" />
     <title>Lentefeest</title>
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon.png">
-
+    <style>
+        #Account {
+            height: 40%;
+        }
+    </style>
 </head>
 
 <body onclick="$('.tap-target').tapTarget('close')">
@@ -20,7 +24,7 @@
             <div class="nav-wrapper purple darken-3">
                 <a class="brand-logo center modal-trigger" data-target="credits" href="#credits">Lentefeest Stream</a>
                 <ul id="nav-mobile" class="right">
-                    <li><a id="loginButton" onclick="login()"><i
+                    <li><a id="loginButton" class="modal-trigger" href="#Account"><i
                                 class="material-icons white-text">account_circle</i></a>
                     </li>
                     <li><a onclick="toggleTheme()"><i class="material-icons white-text">lightbulb_outline</i></a>
@@ -53,6 +57,32 @@
         </div>
         <div class="modal-footer mybg">
             <a href="#!" class="modal-close waves-effect waves-green btn-flat">Close</a>
+        </div>
+    </div>
+
+    <!-- Modal Structure -->
+    <div id="Account" class="modal mybg">
+        <div class="modal-content">
+            <h4>Account</h4>
+            <p>You are currently not logged in</p>
+            <br>
+            <div class="input-field col s12">
+                <select>
+                  <option value="superuser@lentefeest.ga">Admin</option>
+                  <option selected value="stream@lentefeest.ga">Stream</option>
+                </select>
+                <label>Account</label>
+            </div>
+            <div class="row">
+                <div class="input-field col s12">
+                    <input id="password" type="text" class="validate">
+                    <label for="password">Password</label>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer mybg">
+            <a onclick="login()" class="modal-close waves-effect waves-green btn-flat bottom right">Login</a>
+            <a href="#!" class="modal-close waves-effect waves-green btn-flat bottom right">Close</a>
         </div>
     </div>
 
@@ -93,21 +123,22 @@
         function login() {
             // if (prompt("Wat is de geheime code niffo") == "analepoepseks") superuser = true, $("body").attr("loggedin", "true"), alert("Je bent nu superuser yay")
             // else alert("HA REKT IS FOUT")
-            var password = prompt("Wat is de geheime code niffo")
-            firebase.auth().signInWithEmailAndPassword('stream@lentefeest.ga', password).catch(error => {
+            var email = document.querySelector("#Account > div.modal-content > div.input-field.col.s12 > div > select").value;
+            var password = document.querySelector("#password").value;
+            document.querySelector("#password").value = null;
+            firebase.auth().signInWithEmailAndPassword(email, password).catch(error => {
                 console.log(error)
-                alert("HA REKT IS FOUT")
-                login()
             })
         }
         const player = new Plyr('#player');
         firebase.auth().onAuthStateChanged(function(user) {
             if (user) {
+                document.querySelector("#Account > div.modal-content > p").innerText = `You are currently logged in as ${user.email}`
                 firebase.database().ref('yt').once('value').then(function(snapshot) {
                     changeVideo(snapshot.val())
                 });
             } else {
-                login()
+                document.querySelector("#Account > div.modal-content > p").innerText = `You are currently not logged in`
             }
         });
 
@@ -153,6 +184,7 @@
 
         $(document).ready(function() {
             $('.modal').modal();
+            $('select').formSelect();
         });
     </script>
 </body>

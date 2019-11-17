@@ -51,6 +51,44 @@ body[embed="true"] * {
     font-size: large;
 }
 
+#overlay {
+    position: fixed;
+    display: block;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.9);
+    z-index: 2;
+    cursor: wait;
+}
+
+.progress {
+    position: absolute;
+    /* height: 10px;
+    width: 100px; */
+    width: 50rem;
+    top: 50vh;
+    left: 50vw;
+    transform: translate(-50%);
+    height: 10px;
+    border-radius: 50px !important;
+}
+
+/* h1 {
+    position: absolute;
+    top: 50vh;
+    left: 50vw;
+    transform: translate(-50%);
+    font-size: 25px;
+    color: white;
+} */
+
+.indeterminate::before {
+    border-radius: 50px !important;
+}
 
 .poep {
     position: absolute;

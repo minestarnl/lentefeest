@@ -6,8 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- <link rel="stylesheet" href="script/css/poep.css"> -->
     <link rel="stylesheet" href="script/css/materialize.min.css">
-    <link rel="stylesheet" href="script/css/poep.css">
     <link rel="stylesheet" href="https://cdn.plyr.io/3.5.6/plyr.css" />
     <title>Lentefeest</title>
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon.png">
@@ -18,7 +18,7 @@
     </style>
 </head>
 
-<body onclick="$('.tap-target').tapTarget('close')">
+<body onclick="$('.tap-target').tapTarget('close')" class="grey darken-4">
     <div class="navbar-fixed">
         <nav>
             <div class="nav-wrapper purple darken-3">
@@ -27,11 +27,9 @@
                     <li><a id="loginButton" class="modal-trigger" href="#Account"><i
                                 class="material-icons white-text">account_circle</i></a>
                     </li>
-                    <li><a onclick="toggleTheme()"><i class="material-icons white-text">lightbulb_outline</i></a>
+                    <li><a href="./music"><i class="material-icons white-text">music_note</i></a>
                     </li>
-                    <li><a href="/music"><i class="material-icons white-text">music_note</i></a>
-                    </li>
-                    <li><a href="/script"><i class="material-icons white-text">description</i></a>
+                    <li><a href="./script"><i class="material-icons white-text">description</i></a>
                     </li>
                 </ul>
             </div>
@@ -61,36 +59,37 @@
     </div>
 
     <!-- Modal Structure -->
-    <div id="Account" class="modal mybg">
+    <div id="Account" class="modal" style="height: auto !important;">
         <div class="modal-content">
             <h4>Account</h4>
             <p>You are currently not logged in</p>
             <br>
-            <form onsubmit="document.querySelector('#Account > div.modal-footer.mybg > a:nth-child(1)').click()">
+            <div class="row">
                 <div class="input-field col s12">
-                    <select>
-                  <option value="superuser@lentefeest.ga">Admin</option>
-                  <option selected value="stream@lentefeest.ga">Stream</option>
-                </select>
+                    <select id="poep">
+                        <option value="superuser@lentefeest.ga">Admin</option>
+                        <option selected value="stream@lentefeest.ga">Stream</option>
+                    </select>
                     <label>Account</label>
                 </div>
-                <div class="row">
-                    <div class="input-field col s12">
-                        <input id="password" type="text" class="validate">
-                        <label for="password">Password</label>
-                    </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s12">
+                    <input id="password" type="password" class="validate">
+                    <label for="password">Password</label>
                 </div>
-            </form>
-
+            </div>
         </div>
         <div class="modal-footer mybg">
-            <a onclick="login()" class="modal-close waves-effect waves-green btn-flat bottom right">Login</a>
-            <a href="#!" class="modal-close waves-effect waves-green btn-flat bottom right">Close</a>
+            <a onclick="login()" class="modal-close waves-effect waves-purple btn-flat bottom right">Login</a>
+            <a href="#!" class="modal-close waves-effect waves-purple btn-flat bottom right">Close</a>
         </div>
     </div>
 
     <div class="plyr__video-embed" id="player">
-        <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ?origin=https://lentefeest.ga&amp;iv_load_policy=3&amp;modestbranding=1&amp;playsinline=1&amp;showinfo=0&amp;rel=0&amp;enablejsapi=1" allowfullscreen allowtransparency allow="autoplay"></iframe>
+        <iframe
+            src="https://www.youtube.com/embed/dQw4w9WgXcQ?origin=https://lentefeest.ga&amp;iv_load_policy=3&amp;modestbranding=1&amp;playsinline=1&amp;showinfo=0&amp;rel=0&amp;enablejsapi=1"
+            allowfullscreen allowtransparency allow="autoplay"></iframe>
     </div>
     <script src="https://www.gstatic.com/firebasejs/7.4.0/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.4.0/firebase-database.js"></script>
@@ -114,6 +113,9 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-152630374-1"></script>
     <script>
+        $("#password").keypress((e) => {
+            if (e.keyCode == 13) return $('a[onclick="login()"]').click()
+        })
         window.dataLayer = window.dataLayer || [];
 
         function gtag() {
@@ -126,27 +128,28 @@
         function login() {
             // if (prompt("Wat is de geheime code niffo") == "analepoepseks") superuser = true, $("body").attr("loggedin", "true"), alert("Je bent nu superuser yay")
             // else alert("HA REKT IS FOUT")
-            var email = document.querySelector("#Account > div.modal-content > form > div.input-field.col.s12 > div > select").value;
-            var password = document.querySelector("#password").value;
-            document.querySelector("#password").value = null;
+            var email = $("#poep").val();
+            var password = $("#password").val();
+            $("#password").empty();
             firebase.auth().signInWithEmailAndPassword(email, password).catch(error => {
                 console.log(error)
             })
         }
         const player = new Plyr('#player');
-        firebase.auth().onAuthStateChanged(function(user) {
+        firebase.auth().onAuthStateChanged(function (user) {
             if (user) {
-                document.querySelector("#Account > div.modal-content > p").innerText = `You are currently logged in as ${user.email}`
-                firebase.database().ref('yt').once('value').then(function(snapshot) {
+                $("#Account > div.modal-content > p").text(`You are currently logged in as ${user.email}`)
+                firebase.database().ref('yt').once('value').then(function (snapshot) {
                     changeVideo(snapshot.val())
                 });
+                $('#Account').modal('close');
             } else {
-                document.querySelector("#Account > div.modal-content > p").innerText = `You are currently not logged in`
+                $("#Account > div.modal-content > p").text(`You are currently not logged in`)
             }
         });
 
         var ref = firebase.database().ref('yt');
-        ref.on('value', function(snapshot) {
+        ref.on('value', function (snapshot) {
             changeVideo(snapshot.val())
         });
 
@@ -164,7 +167,7 @@
         }
 
         $('document').ready(() => {
-            firebase.database().ref('yt').once('value').then(function(snapshot) {
+            firebase.database().ref('yt').once('value').then(function (snapshot) {
                 changeVideo(snapshot.val())
             });
         })
@@ -181,12 +184,12 @@
             // $('.tap-target').tapTarget('open')
         }, 5000)
 
-        $(document).ready(function() {
+        $(document).ready(function () {
             $('.tap-target').tapTarget();
         });
 
-        $(document).ready(function() {
-            $('.modal').modal();
+        $(document).ready(function () {
+            var popup = $('.modal').modal();
             $('select').formSelect();
         });
     </script>

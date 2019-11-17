@@ -43,6 +43,10 @@ function scrollTo() {
 }
 
 function scroll(val) {
+    if (!loaded) {
+        $("#overlay").hide()
+        loaded = true
+    }
     elems = val
     assignSelector()
     $(".c24 .selected").removeClass("selected")

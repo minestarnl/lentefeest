@@ -51,6 +51,26 @@ body[embed="true"] * {
     font-size: large;
 }
 
+body[mobile="true"] {
+    width: calc(100vw - 40px) !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    overflow: hidden !important;
+}
+
+body[mobile="true"] .c24 {
+    background-color: transparent !important;
+    width: calc(100vw - 40px) !important;
+    padding: 0 !important;
+    margin: 20px !important;
+    overflow: hidden !important;
+    padding-left: 10px !important;
+}
+
+body[mobile="true"] .show-on-large {
+    display: none !important;
+}
+
 #overlay {
     position: fixed;
     display: block;

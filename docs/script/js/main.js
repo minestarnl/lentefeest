@@ -4,13 +4,13 @@ var loaded = false;
 var elems;
 
 var scrollRef = firebase.database().ref('scroll');
-scrollRef.on('value', function (snapshot) {
+scrollRef.on('value', function(snapshot) {
     scroll(snapshot.val());
 });
 
-$(function () {
+$(function() {
     if (location.hash == "#embed") $(".navbar-fixed").hide(), $("body").attr("embed", "true")
-    $(".c24 p").each(function (poep) {
+    $(".c24 p").each(function(poep) {
         $(this).attr("id", poep)
         $(this).click(scrollTo);
     })
@@ -45,10 +45,6 @@ function scrollTo() {
 function scroll(val) {
     if (!loaded) {
         $("#overlay").hide()
-        M.toast({
-            html: "Deze site is mede mogelijk gemaakt door NetlobYogashop.nl!!!!",
-            displayLength: 1000
-        })
         loaded = true
     }
     elems = val
@@ -73,12 +69,12 @@ function assignSelector() {
     $(".poep").css("top", ($(`#${elems[0]}`).offset().top - height + $(`#${elems[0]}`).height()))
     $(".poep").css("left", ($(`#0`).offset().left - 20))
     $(".poep").css("height", height)
-    // $(".poep").css("height", height + $(`#${elems[0]}`).offset().top - height + $(`#${elems[0]}`).height())
+        // $(".poep").css("height", height + $(`#${elems[0]}`).offset().top - height + $(`#${elems[0]}`).height())
 }
 
 $(window).on('resize', assignSelector);
 
-$(document).keydown(function (e) {
+$(document).keydown(function(e) {
     if ([37, 38].includes(e.which)) {
         for (var id = parseInt(elems[elems.length - 1]) - 1; id < parseInt(elems[elems.length - 1]) + 100; id--) {
             if ($(`#${id}`).text() != "") {

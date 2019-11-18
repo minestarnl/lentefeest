@@ -340,12 +340,14 @@ table th {
     font-size: 11pt
 }
 
-.c24 {
-    background-color: #ffffff;
-    width: 60rem !important;
-    padding: 70.8pt 70.8pt 70.8pt 70.8pt;
-    margin-top: 10px;
-    margin-left: calc(50vw - 30rem);
+@media only screen and (min-width: 600px) {
+    .c24 {
+        background-color: #ffffff;
+        width: 60rem !important;
+        /* padding: 70.8pt 70.8pt 70.8pt 70.8pt; */
+        margin-top: 10px;
+        margin-left: calc(50vw - 30rem);
+    }
 }
 
 .c12 {
@@ -544,5 +546,22 @@ h6 {
 @keyframes blinker {
     50% {
         box-shadow: -5px 0px 0px 0px transparent;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    body[embed="true"] {
+        width: calc(100vw - 30px) !important;
+        padding: 0 !important;
+        margin: 0 !important;
+        /* overflow: hidden !important; */
+    }
+
+    body[embed="true"] .c24 {
+        /* background-color: transparent !important; */
+        width: calc(100vw - 30px) !important;
+        padding: 0 !important;
+        margin: 20px !important;
+        /* overflow: hidden !important; */
     }
 }

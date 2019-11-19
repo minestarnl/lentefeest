@@ -1,0 +1,294 @@
+input {
+    display: none;
+}
+
+label {
+    color: #222;
+    background: #f4f4f4;
+    box-shadow: 0 0 1rem #222;
+    padding: .2rem .4rem;
+    cursor: pointer;
+    transition: box-shadow 0.6s ease-in-out;
+}
+
+label:hover,
+label:focus,
+label:active {
+    background: #eaeaea;
+}
+
+:checked~label {
+    box-shadow: 0 0 1rem #f4f4f4;
+}
+
+.particle {
+    width: 10px;
+    height: 2px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    offset-distance: 0;
+    transition: offset-distance 0.6s cubic-bezier(0, 0.7, 0.3, 1);
+    z-index: -1;
+}
+
+:checked~.particle {
+    offset-distance: 100%;
+}
+
+.particle:nth-of-type(0) {
+    offset-path: path("M 0, 0 q 20, -215, -116, 179 ");
+    background: #22bd83;
+}
+
+.particle:nth-of-type(1) {
+    offset-path: path("M 0, 0 q -236, 222, -12, -159 ");
+    background: #8a1288;
+}
+
+.particle:nth-of-type(2) {
+    offset-path: path("M 0, 0 q 56, 195, 188, 36 ");
+    background: #36a655;
+}
+
+.particle:nth-of-type(3) {
+    offset-path: path("M 0, 0 q -240, -239, -231, 218 ");
+    background: #fb010a;
+}
+
+.particle:nth-of-type(4) {
+    offset-path: path("M 0, 0 q -196, -150, 132, -105 ");
+    background: #5df212;
+}
+
+.particle:nth-of-type(5) {
+    offset-path: path("M 0, 0 q 89, -60, -84, -224 ");
+    background: #aa2fb0;
+}
+
+.particle:nth-of-type(6) {
+    offset-path: path("M 0, 0 q -95, -33, 24, 115 ");
+    background: #75e12b;
+}
+
+.particle:nth-of-type(7) {
+    offset-path: path("M 0, 0 q -39, 125, 157, 66 ");
+    background: #5d0c5f;
+}
+
+.particle:nth-of-type(8) {
+    offset-path: path("M 0, 0 q 212, 42, 135, 198 ");
+    background: #073be4;
+}
+
+.particle:nth-of-type(9) {
+    offset-path: path("M 0, 0 q 56, -140, -79, 152 ");
+    background: #fc293a;
+}
+
+.particle:nth-of-type(10) {
+    offset-path: path("M 0, 0 q 114, -88, 53, -149 ");
+    background: #63837f;
+}
+
+.particle:nth-of-type(11) {
+    offset-path: path("M 0, 0 q 74, -58, -94, 135 ");
+    background: #09a726;
+}
+
+.particle:nth-of-type(12) {
+    offset-path: path("M 0, 0 q -248, -106, 208, -138 ");
+    background: #1cde56;
+}
+
+.particle:nth-of-type(13) {
+    offset-path: path("M 0, 0 q -197, 229, -104, -200 ");
+    background: #702b05;
+}
+
+.particle:nth-of-type(14) {
+    offset-path: path("M 0, 0 q -180, 237, 159, 236 ");
+    background: #bcb70f;
+}
+
+.particle:nth-of-type(15) {
+    offset-path: path("M 0, 0 q 241, -45, -122, -191 ");
+    background: #43f027;
+}
+
+.particle:nth-of-type(16) {
+    offset-path: path("M 0, 0 q -208, 153, 223, 87 ");
+    background: #75e80a;
+}
+
+.particle:nth-of-type(17) {
+    offset-path: path("M 0, 0 q 140, -141, -154, 244 ");
+    background: #0cff50;
+}
+
+.particle:nth-of-type(18) {
+    offset-path: path("M 0, 0 q 4, 225, -67, 154 ");
+    background: #2cdc17;
+}
+
+.particle:nth-of-type(19) {
+    offset-path: path("M 0, 0 q 25, 38, -215, 230 ");
+    background: #793fd8;
+}
+
+.particle:nth-of-type(20) {
+    offset-path: path("M 0, 0 q -93, 221, 224, -153 ");
+    background: #a3120d;
+}
+
+.particle:nth-of-type(21) {
+    offset-path: path("M 0, 0 q 151, -244, -172, -196 ");
+    background: #35fd3f;
+}
+
+.particle:nth-of-type(22) {
+    offset-path: path("M 0, 0 q -153, 191, -205, -190 ");
+    background: #813694;
+}
+
+.particle:nth-of-type(23) {
+    offset-path: path("M 0, 0 q 139, -128, 26, -190 ");
+    background: #0ecf98;
+}
+
+.particle:nth-of-type(24) {
+    offset-path: path("M 0, 0 q -18, 160, -122, -89 ");
+    background: #3183c0;
+}
+
+.particle:nth-of-type(25) {
+    offset-path: path("M 0, 0 q -213, 2, 40, 196 ");
+    background: #136dd1;
+}
+
+.particle:nth-of-type(26) {
+    offset-path: path("M 0, 0 q 153, 189, 164, 9 ");
+    background: #2ddf79;
+}
+
+.particle:nth-of-type(27) {
+    offset-path: path("M 0, 0 q -124, 99, -96, 149 ");
+    background: #2ba111;
+}
+
+.particle:nth-of-type(28) {
+    offset-path: path("M 0, 0 q 195, -33, 74, -168 ");
+    background: #524cb5;
+}
+
+.particle:nth-of-type(29) {
+    offset-path: path("M 0, 0 q 64, -45, 151, -36 ");
+    background: #a98d2f;
+}
+
+.particle:nth-of-type(30) {
+    offset-path: path("M 0, 0 q -8, -153, 182, -79 ");
+    background: #e1721e;
+}
+
+.particle:nth-of-type(31) {
+    offset-path: path("M 0, 0 q 194, -183, -133, -40 ");
+    background: #bdc602;
+}
+
+.particle:nth-of-type(32) {
+    offset-path: path("M 0, 0 q -235, 30, -105, 163 ");
+    background: #2f0811;
+}
+
+.particle:nth-of-type(33) {
+    offset-path: path("M 0, 0 q 117, -193, 54, 220 ");
+    background: #1032b5;
+}
+
+.particle:nth-of-type(34) {
+    offset-path: path("M 0, 0 q -179, -120, 30, -166 ");
+    background: #0c4c1d;
+}
+
+.particle:nth-of-type(35) {
+    offset-path: path("M 0, 0 q -105, 213, -206, 226 ");
+    background: #4ebb4d;
+}
+
+.particle:nth-of-type(36) {
+    offset-path: path("M 0, 0 q -177, 7, 59, 187 ");
+    background: #3ed613;
+}
+
+.particle:nth-of-type(37) {
+    offset-path: path("M 0, 0 q 40, 159, -103, -157 ");
+    background: #757385;
+}
+
+.particle:nth-of-type(38) {
+    offset-path: path("M 0, 0 q -187, 249, 130, 20 ");
+    background: #75024d;
+}
+
+.particle:nth-of-type(39) {
+    offset-path: path("M 0, 0 q 162, -179, -140, -127 ");
+    background: #5fa56b;
+}
+
+.particle:nth-of-type(40) {
+    offset-path: path("M 0, 0 q 191, 204, 99, -247 ");
+    background: #67873b;
+}
+
+.particle:nth-of-type(41) {
+    offset-path: path("M 0, 0 q 148, -123, 51, 3 ");
+    background: #4fea51;
+}
+
+.particle:nth-of-type(42) {
+    offset-path: path("M 0, 0 q 147, -86, 203, 149 ");
+    background: #3e22b1;
+}
+
+.particle:nth-of-type(43) {
+    offset-path: path("M 0, 0 q -201, -239, -110, -89 ");
+    background: #28fa19;
+}
+
+.particle:nth-of-type(44) {
+    offset-path: path("M 0, 0 q -32, -59, -245, -98 ");
+    background: #bb05cb;
+}
+
+.particle:nth-of-type(45) {
+    offset-path: path("M 0, 0 q 198, 173, 94, 69 ");
+    background: #75490e;
+}
+
+.particle:nth-of-type(46) {
+    offset-path: path("M 0, 0 q -225, -90, 34, 92 ");
+    background: #ef4332;
+}
+
+.particle:nth-of-type(47) {
+    offset-path: path("M 0, 0 q -171, -23, 247, -107 ");
+    background: #87fc05;
+}
+
+.particle:nth-of-type(48) {
+    offset-path: path("M 0, 0 q -233, 158, -10, 25 ");
+    background: #04e75c;
+}
+
+.particle:nth-of-type(49) {
+    offset-path: path("M 0, 0 q 210, 89, 222, -170 ");
+    background: #36d972;
+}
+
+.particle:nth-of-type(50) {
+    offset-path: path("M 0, 0 q -75, 105, 179, -195 ");
+    background: #586459;
+}

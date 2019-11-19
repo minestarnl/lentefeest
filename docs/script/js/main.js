@@ -1,6 +1,7 @@
 var superuser = false;
 var database = firebase.database();
 var loaded = false;
+var scrolling = false;
 var elems;
 
 var scrollRef = firebase.database().ref('scroll');
@@ -52,11 +53,16 @@ function scroll(val) {
     elems = val
     assignSelector()
     $(".c24 .selected").removeClass("selected")
+    if (scrolling) return
+    scrolling = true
     $('html, body').animate({
             scrollTop: ($(`#${elems[0]}`).offset().top - (location.hash == "#embed" ? 50 : 200)),
         },
         (location.hash == "#embed" ? 500 : 200),
-        'linear'
+        'linear',
+        () => {
+            scrolling = false
+        }
     )
 }
 
@@ -79,6 +85,7 @@ $(window).on('resize', assignSelector);
 
 $(document).keydown(function (e) {
     if ([37, 38].includes(e.which)) {
+        e.preventDefault();
         for (var id = parseInt(elems[elems.length - 1]) - 1; id < parseInt(elems[elems.length - 1]) + 100; id--) {
             if ($(`#${id}`).text() != "") {
                 $(`#${id}`).click()
@@ -86,6 +93,7 @@ $(document).keydown(function (e) {
             }
         }
     } else if ([32, 39, 40].includes(e.which)) {
+        e.preventDefault();
         for (var id = parseInt(elems[0]) + 1; id < parseInt(elems[0]) + 100; id++) {
             if ($(`#${id}`).text() != "") {
                 $(`#${id}`).click()
@@ -93,5 +101,4 @@ $(document).keydown(function (e) {
             }
         }
     }
-    e.preventDefault();
 });

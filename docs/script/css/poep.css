@@ -50,7 +50,7 @@ body[embed="true"] {
     width: calc(100vw - 30px) !important;
     padding: 0 !important;
     margin: 0 !important;
-    overflow: hidden !important;
+    /* overflow: hidden !important; */
 }
 
 body[embed="true"] .c24 {
@@ -58,7 +58,7 @@ body[embed="true"] .c24 {
     width: calc(100vw - 30px) !important;
     padding: 0 !important;
     margin: 20px !important;
-    overflow: hidden !important;
+    /* overflow: hidden !important; */
 }
 
 body[embed="true"] span {
@@ -74,7 +74,7 @@ body[mobile="true"] {
     width: calc(100vw - 40px) !important;
     padding: 0 !important;
     margin: 0 !important;
-    overflow: hidden !important;
+    /* overflow: hidden !important; */
 }
 
 body[mobile="true"] .c24 {
@@ -82,7 +82,7 @@ body[mobile="true"] .c24 {
     width: calc(100vw - 40px) !important;
     padding: 0 !important;
     margin: 20px !important;
-    overflow: hidden !important;
+    /* overflow: hidden !important; */
     padding-left: 10px !important;
 }
 

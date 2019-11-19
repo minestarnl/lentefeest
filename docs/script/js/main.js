@@ -5,21 +5,21 @@ var scrolling = false;
 var elems;
 
 var scrollRef = firebase.database().ref('scroll');
-scrollRef.on('value', function (snapshot) {
+scrollRef.on('value', function(snapshot) {
     scroll(snapshot.val());
 });
 
 var confettiRef = firebase.database().ref('confetti');
-confettiRef.on('value', function (snapshot) {
+confettiRef.on('value', function(snapshot) {
     snapshot.val() ? confetti.start() : confetti.stop()
-    // alert(snapshot.val())
+        // alert(snapshot.val())
 });
 
-$(function () {
+$(function() {
     // location.hash == "#embed"
     if (location.hash == "#embed") $(".navbar-fixed").hide(), $("body").attr("embed", "true")
     if (location.hash == "#mobile" || $(window).width() < 900) $("body").attr("mobile", "true")
-    $(".c24 p").each(function (poep) {
+    $(".c24 p").each(function(poep) {
         $(this).attr("id", poep)
         if (!$(this).is(".title")) $(this).click(scrollTo);
     })
@@ -88,12 +88,12 @@ function assignSelector() {
     $(".poep").css("top", ($(`#${elems[0]}`).offset().top - height + $(`#${elems[0]}`).height()))
     $(".poep").css("left", ($(`#0`).offset().left - 20))
     $(".poep").css("height", height)
-    // $(".poep").css("height", height + $(`#${elems[0]}`).offset().top - height + $(`#${elems[0]}`).height())
+        // $(".poep").css("height", height + $(`#${elems[0]}`).offset().top - height + $(`#${elems[0]}`).height())
 }
 
 $(window).on('resize', assignSelector);
 
-$(document).keydown(function (e) {
+$(document).keydown(function(e) {
     if ([37, 38].includes(e.which)) {
         e.preventDefault();
         for (var id = parseInt(elems[elems.length - 1]) - 1; id < parseInt(elems[elems.length - 1]) + 100; id--) {
@@ -111,4 +111,52 @@ $(document).keydown(function (e) {
             }
         }
     }
+});
+
+var scrollspy;
+
+// document.addEventListener('DOMContentLoaded', function() {
+//     var elems = document.querySelectorAll('.scrollspy');
+//     var instances = M.ScrollSpy.init(elems, {
+//         activeClass: 'active',
+//         getActiveElement: function(id) {
+//             return 'a[href="#' + id + '"]';
+//         }
+//     });
+//     scrollspy = instances
+// });
+var poep
+window.addEventListener("scroll", function() {
+    var elementTarget = document.querySelectorAll(".scrollspy");
+    var elScrolledBy = []
+    elementTarget.forEach((el) => {
+        if (window.scrollY > (el.offsetTop + el.offsetHeight)) {
+            elScrolledBy.push(el)
+            els = el
+                // console.log(el)
+        }
+    })
+    poep = elScrolledBy
+    var furthestScrollBy
+        // this.console.log(elScrolledBy)
+    elScrolledBy.forEach((el) => {
+        console.log(el.getAttribute('id'))
+
+        if (furthestScrollBy == undefined) {
+            furthestScrollBy = el
+        } else if (parseInt(el.getAttribute('id'), 10) >= parseInt(furthestScrollBy.getAttribute('id'), 10)) {
+            furthestScrollBy = el
+        };
+        console.log(furthestScrollBy.getAttribute('id'))
+    })
+
+    // poep = furthestScrollBy
+
+    var currentSceneText = 'scene 1'
+    if (furthestScrollBy != undefined) {
+        currentSceneText = furthestScrollBy.children[0].innerText
+    }
+
+    console.log(currentSceneText)
+    $('#currentSceneText').text(currentSceneText)
 });

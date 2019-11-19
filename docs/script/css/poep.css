@@ -17,6 +17,10 @@
     display: block !important;
 }
 
+#currentScene {
+    margin-left: 1rem;
+}
+
 body[theme="dark"] .c8,
 body[theme="dark"] .c18,
 body[theme="dark"] .brand-logo {
@@ -115,6 +119,7 @@ body[mobile="true"] .show-on-large {
     height: 10px;
     border-radius: 50px !important;
 }
+
 
 /* h1 {
     position: absolute;
@@ -448,6 +453,7 @@ table th {
     height: 57pt
 }
 
+
 /* .c25 {
     background-color: #ffffff
 } */
@@ -592,7 +598,6 @@ h6 {
     0% {
         transform: translateY(100vh);
     }
-
     100% {
         transform: translateY(-100vh);
     }
@@ -605,7 +610,6 @@ h6 {
         margin: 0 !important;
         /* overflow: hidden !important; */
     }
-
     body[embed="true"] .c24 {
         /* background-color: transparent !important; */
         width: calc(100vw - 30px) !important;
@@ -614,6 +618,7 @@ h6 {
         /* overflow: hidden !important; */
     }
 }
+
 
 /* 
 body:after {

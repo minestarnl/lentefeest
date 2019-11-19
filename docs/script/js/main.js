@@ -15,7 +15,7 @@ confettiRef.on('value', function(snapshot) {
         // alert(snapshot.val())
 });
 
-$(function() {
+$(async() => {
     // location.hash == "#embed"
     if (location.hash == "#embed") $(".navbar-fixed").hide(), $("body").attr("embed", "true")
     if (location.hash == "#mobile" || $(window).width() < 900) $("body").attr("mobile", "true")
@@ -23,6 +23,23 @@ $(function() {
         $(this).attr("id", poep)
         if (!$(this).is(".title")) $(this).click(scrollTo);
     })
+    $(".c26").each(function(index) {
+        $(this).attr("id", `scene-${index}`)
+        if ($(this).text() != "") {
+            $("#scrollspy > ul").append(`<li index="${index}"><a>${$(this).text()}</a></li>`)
+            $("#scrollspy > ul > li").each(function() {
+                $(this).click(function() {
+                    $("#scrollspy > ul > li").each(function() {
+                        $(this).find("a").removeClass("active")
+                    })
+                    $(this).find("a").addClass("active")
+                    console.log([`scene-${$(this).attr("index")}`])
+                    scroll([`scene-${$(this).attr("index")}`])
+                })
+            })
+        }
+    })
+    if (localStorage.getItem("theme") == "dark") $("body").attr("theme", "dark")
 })
 
 function login() {
@@ -60,13 +77,15 @@ function scroll(val) {
         $("#overlay").hide()
         loaded = true
     }
+    var topMargin = val[0].startsWith("scene-") ? 100 : 200
     elems = val
     assignSelector()
     $(".c24 .selected").removeClass("selected")
     if (scrolling) return
     scrolling = true
+        // var topMargin = (location.hash == "#embed" ? 50 : 200)
     $('html, body').animate({
-            scrollTop: ($(`#${elems[0]}`).offset().top - (location.hash == "#embed" ? 50 : 200)),
+            scrollTop: ($(`#${elems[0]}`).offset().top - topMargin),
         },
         (location.hash == "#embed" ? 500 : 200),
         'linear',
@@ -77,12 +96,13 @@ function scroll(val) {
 }
 
 function toggleTheme() {
-    if ($("body").attr("theme") == "dark") $("body").attr("theme", "light")
-    else $("body").attr("theme", "dark")
+    if ($("body").attr("theme") == "dark") $("body").attr("theme", "light"), localStorage.setItem("theme", "light")
+    else $("body").attr("theme", "dark"), localStorage.setItem("theme", "dark")
 }
 
 function assignSelector() {
     if (location.hash == "#mobile" || $(window).width() < 900) $("body").attr("mobile", "true")
+    else $("body").attr("mobile", "false")
     var height = 0
     elems.forEach(elem => height += $(`#${elem}`).height())
     $(".poep").css("top", ($(`#${elems[0]}`).offset().top - height + $(`#${elems[0]}`).height()))

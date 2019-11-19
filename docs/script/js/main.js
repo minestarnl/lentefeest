@@ -9,6 +9,7 @@ scrollRef.on('value', function (snapshot) {
 });
 
 $(function () {
+    // location.hash == "#embed"
     if (location.hash == "#embed") $(".navbar-fixed").hide(), $("body").attr("embed", "true")
     if (location.hash == "#mobile" || $(window).width() < 900) $("body").attr("mobile", "true")
     $(".c24 p").each(function (poep) {

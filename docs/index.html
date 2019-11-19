@@ -22,6 +22,7 @@
             left: 50%;
             transform: translate(-50%);
             font-size: 3rem;
+            display: none;
         }
     </style>
 </head>
@@ -157,10 +158,10 @@
             }
         });
 
-        var ref = firebase.database().ref('yt');
-        ref.on('value', function (snapshot) {
-            changeVideo(snapshot.val())
-        });
+        // var ref = firebase.database().ref('yt');
+        // ref.on('value', function (snapshot) {
+        //     changeVideo(snapshot.val())
+        // });
 
         function changeVideo(url) {
             // console.log(url)
@@ -175,11 +176,13 @@
             // player.play()
         }
 
-        $('document').ready(() => {
-            firebase.database().ref('yt').once('value').then(function (snapshot) {
-                changeVideo(snapshot.val())
-            });
-        })
+        // $('document').ready(() => {
+        firebase.database().ref('yt').on('value', function (snapshot) {
+            // changeVideo(snapshot.val())
+            $(".poep").show().attr("href", snapshot.val())
+            // alert(snapshot.val())
+        });
+        // })
 
         function toggleTheme() {
             if ($("body").attr("theme") == "dark") $("body").attr("theme", "light")

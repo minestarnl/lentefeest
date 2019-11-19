@@ -17,6 +17,23 @@
     display: block !important;
 }
 
+#scrollspy {
+    position: fixed;
+    right: 3vw;
+    top: 50vh;
+    transform: translateY(-50%);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif !important;
+    text-transform: capitalize;
+}
+
+.table-of-contents a:hover {
+    border-left-color: rgb(133, 53, 184) !important;
+}
+
+.table-of-contents a.active {
+    border-left-color: rgb(106, 27, 154) !important;
+}
+
 body[theme="dark"] .c8,
 body[theme="dark"] .c18,
 body[theme="dark"] .brand-logo {
@@ -237,7 +254,7 @@ table th {
     text-decoration: none;
     vertical-align: baseline;
     font-size: 72pt;
-    font-family: "Calibri";
+    /* font-family: "Calibri"; */
     font-style: normal
 }
 
@@ -489,14 +506,14 @@ table th {
 li {
     color: #000000;
     font-size: 11pt;
-    font-family: "Calibri"
+    /* font-family: "Calibri" */
 }
 
 p {
     margin: 0;
     color: #000000;
     font-size: 11pt;
-    font-family: "Calibri"
+    /* font-family: "Calibri" */
 }
 
 h1 {
@@ -518,7 +535,7 @@ h2 {
     font-weight: 700;
     font-size: 18pt;
     padding-bottom: 4pt;
-    font-family: "Calibri";
+    /* font-family: "Calibri"; */
     line-height: 1.0791666666666666;
     page-break-after: avoid;
     orphans: 2;
@@ -532,7 +549,7 @@ h3 {
     font-weight: 700;
     font-size: 14pt;
     padding-bottom: 4pt;
-    font-family: "Calibri";
+    /* font-family: "Calibri"; */
     line-height: 1.0791666666666666;
     page-break-after: avoid;
     orphans: 2;
@@ -546,7 +563,7 @@ h4 {
     font-weight: 700;
     font-size: 12pt;
     padding-bottom: 2pt;
-    font-family: "Calibri";
+    /* font-family: "Calibri"; */
     line-height: 1.0791666666666666;
     page-break-after: avoid;
     orphans: 2;
@@ -560,7 +577,7 @@ h5 {
     font-weight: 700;
     font-size: 11pt;
     padding-bottom: 2pt;
-    font-family: "Calibri";
+    /* font-family: "Calibri"; */
     line-height: 1.0791666666666666;
     page-break-after: avoid;
     orphans: 2;
@@ -574,7 +591,7 @@ h6 {
     font-weight: 700;
     font-size: 10pt;
     padding-bottom: 2pt;
-    font-family: "Calibri";
+    /* font-family: "Calibri"; */
     line-height: 1.0791666666666666;
     page-break-after: avoid;
     orphans: 2;

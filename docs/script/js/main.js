@@ -9,18 +9,28 @@ scrollRef.on('value', function (snapshot) {
     scroll(snapshot.val());
 });
 
+var confettiRef = firebase.database().ref('confetti');
+confettiRef.on('value', function (snapshot) {
+    snapshot.val() ? confetti.start() : confetti.stop()
+    // alert(snapshot.val())
+});
+
 $(function () {
     // location.hash == "#embed"
     if (location.hash == "#embed") $(".navbar-fixed").hide(), $("body").attr("embed", "true")
     if (location.hash == "#mobile" || $(window).width() < 900) $("body").attr("mobile", "true")
     $(".c24 p").each(function (poep) {
         $(this).attr("id", poep)
-        $(this).click(scrollTo);
+        if (!$(this).is(".title")) $(this).click(scrollTo);
     })
 })
 
 function login() {
     firebase.auth().signInWithEmailAndPassword('superuser@lentefeest.ga', prompt("Wat is de geheime code niffo")).catch(error => alert("HA REKT IS FOUT"))
+}
+
+function toggleConfetti() {
+    firebase.database().ref('confetti').set(confetti.isRunning() ? false : true)
 }
 
 firebase.auth().onAuthStateChanged((user) => {

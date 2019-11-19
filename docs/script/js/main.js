@@ -145,18 +145,14 @@ var scrollspy;
 //     });
 //     scrollspy = instances
 // });
-var poep
 window.addEventListener("scroll", function() {
     var elementTarget = document.querySelectorAll(".scrollspy");
     var elScrolledBy = []
     elementTarget.forEach((el) => {
-        if (window.scrollY > (el.offsetTop + el.offsetHeight)) {
-            elScrolledBy.push(el)
-            els = el
-                // console.log(el)
-        }
+        if (window.scrollY > (el.offsetTop + el.offsetHeight))
+            elScrolledBy.push(el);
+
     })
-    poep = elScrolledBy
     var furthestScrollBy
         // this.console.log(elScrolledBy)
     elScrolledBy.forEach((el) => {
@@ -167,16 +163,12 @@ window.addEventListener("scroll", function() {
         } else if (parseInt(el.getAttribute('id'), 10) >= parseInt(furthestScrollBy.getAttribute('id'), 10)) {
             furthestScrollBy = el
         };
-        console.log(furthestScrollBy.getAttribute('id'))
     })
-
-    // poep = furthestScrollBy
 
     var currentSceneText = 'scene 1'
     if (furthestScrollBy != undefined) {
         currentSceneText = furthestScrollBy.children[0].innerText
     }
 
-    console.log(currentSceneText)
     $('#currentSceneText').text(currentSceneText)
 });

@@ -2,6 +2,8 @@ var superuser = false;
 var database = firebase.database();
 var loaded = false;
 var scrolling = false;
+var topMargin = 0;
+var scrolled;
 var elems;
 
 var scrollRef = firebase.database().ref('scroll');
@@ -83,7 +85,7 @@ function scroll(val, scene) {
         $("#overlay").hide()
         loaded = true
     }
-    var topMargin = scene ? 100 : 200
+    topMargin = scene ? 100 : 200
     elems = val
     assignSelector()
     $(".c24 .selected").removeClass("selected")
@@ -97,6 +99,7 @@ function scroll(val, scene) {
         'linear',
         () => {
             scrolling = false
+            scrolled = ($(`#${elems[0]}`).offset().top - topMargin)
         }
     )
 }
@@ -155,6 +158,10 @@ $(document).keydown(function(e) {
 //     scrollspy = instances
 // });
 window.addEventListener("scroll", () => {
+    var y = (($(`#${elems[0]}`).offset().top - topMargin) - $(window).scrollTop())
+    console.log(y)
+    if((y < -30 || y > 30)) $(".fixed-action-btn").show()//.animate({ opacity: "1" }, 100 )
+    else $(".fixed-action-btn").hide()//.animate({ opacity: "0" }, 100 )
     var elScrolledBy = [],
         furthestScrollBy,
         currentSceneText = 'scene 1'

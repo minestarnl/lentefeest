@@ -42,6 +42,7 @@ $(async() => {
         $(this).attr("id", poep)
         if (!$(this).is(".title")) $(this).click(scrollTo);
     })
+    $(".fixed-action-btn").click(scrollTop)
     if (localStorage.getItem("theme") == "dark") $("body").attr("theme", "dark")
 })
 
@@ -98,6 +99,10 @@ function scroll(val, scene) {
             scrolling = false
         }
     )
+}
+
+function scrollTop() {
+    scroll(elems)
 }
 
 function toggleTheme() {

@@ -1,20 +1,29 @@
-var superuser = false;
-var database = firebase.database();
-var loaded = false;
-var scrolling = false;
-var topMargin = 0;
-var scrolled;
-var elems;
+var superuser = false,
+    database = firebase.database(),
+    loaded = false,
+    scrolling = false,
+    topMargin = 0,
+    scrolled,
+    elems = [],
+    scrollRef = firebase.database().ref('scroll'),
+    confettiRef = firebase.database().ref('confetti'),
+    excludeRef = firebase.database().ref('exclude');
 
-var scrollRef = firebase.database().ref('scroll');
 scrollRef.on('value', function(snapshot) {
     scroll(snapshot.val());
 });
 
-var confettiRef = firebase.database().ref('confetti');
 confettiRef.on('value', function(snapshot) {
     snapshot.val() ? confetti.start() : confetti.stop()
         // alert(snapshot.val())
+});
+
+excludeRef.on('value', function(snapshot) {
+    console.dir(snapshot.val())
+    $(".exclude").removeClass("exclude")
+    snapshot.val().forEach(exclude => {
+        $(`#${exclude}`).addClass("exclude")
+    })
 });
 
 $(async() => {
@@ -158,8 +167,9 @@ $(document).keydown(function(e) {
 //     scrollspy = instances
 // });
 window.addEventListener("scroll", () => {
+    if(elems.length == 0) return
     var y = (($(`#${elems[0]}`).offset().top - topMargin) - $(window).scrollTop())
-    console.log(y)
+    // console.log(y)
     if((y < -30 || y > 30)) $(".fixed-action-btn").show()//.animate({ opacity: "1" }, 100 )
     else $(".fixed-action-btn").hide()//.animate({ opacity: "0" }, 100 )
     var elScrolledBy = [],
@@ -178,7 +188,7 @@ window.addEventListener("scroll", () => {
             furthestScrollBy = $(el)
         };
     })
-
+ 
     if (furthestScrollBy) {
         currentSceneText = $(furthestScrollBy).first().text()
     }

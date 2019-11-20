@@ -149,7 +149,7 @@ window.addEventListener("scroll", function() {
     var elementTarget = document.querySelectorAll(".scrollspy");
     var elScrolledBy = []
     elementTarget.forEach((el) => {
-        if (window.scrollY + 500 > (el.offsetTop + el.offsetHeight))
+        if (window.scrollY + ($(window).height() / 2) > (el.offsetTop + el.offsetHeight))
             elScrolledBy.push(el);
 
     })

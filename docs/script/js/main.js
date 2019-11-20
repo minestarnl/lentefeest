@@ -156,7 +156,6 @@ window.addEventListener("scroll", function() {
     var furthestScrollBy
         // this.console.log(elScrolledBy)
     elScrolledBy.forEach((el) => {
-
         if (furthestScrollBy == undefined) {
             furthestScrollBy = el
         } else if (parseInt(el.getAttribute('id'), 10) >= parseInt(furthestScrollBy.getAttribute('id'), 10)) {
@@ -166,8 +165,9 @@ window.addEventListener("scroll", function() {
 
     var currentSceneText = 'scene 1'
     if (furthestScrollBy != undefined) {
-        currentSceneText = furthestScrollBy.children[0].innerText
+        console.dir(furthestScrollBy)
+        currentSceneText = $(furthestScrollBy).first().text()
     }
 
-    $('#currentSceneText').text(currentSceneText)
+    $("#currentSceneText").text(currentSceneText)
 });

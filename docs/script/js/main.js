@@ -149,14 +149,13 @@ window.addEventListener("scroll", function() {
     var elementTarget = document.querySelectorAll(".scrollspy");
     var elScrolledBy = []
     elementTarget.forEach((el) => {
-        if (window.scrollY > (el.offsetTop + el.offsetHeight))
+        if (window.scrollY + 500 > (el.offsetTop + el.offsetHeight))
             elScrolledBy.push(el);
 
     })
     var furthestScrollBy
         // this.console.log(elScrolledBy)
     elScrolledBy.forEach((el) => {
-        console.log(el.getAttribute('id'))
 
         if (furthestScrollBy == undefined) {
             furthestScrollBy = el

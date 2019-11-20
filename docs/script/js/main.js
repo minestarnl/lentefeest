@@ -26,14 +26,17 @@ $(async() => {
     $(".c26").each(function(index) {
         $(this).attr("id", `scene-${index}`)
         if ($(this).text() != "") {
+            var text = $(this).text()
+            $(this).text(text.substring(0, text.indexOf(text.match(/\d+/) )) + text.match(/\d+/)[0])
             $("#scrollspy > ul").append(`<li index="${index}"><a>${$(this).text()}</a></li>`)
             $("#scrollspy > ul > li").each(function() {
+                $(this).attr("value", $(this).text())
                 $(this).click(function() {
-                    $("#scrollspy > ul > li").each(function() {
-                        $(this).find("a").removeClass("active")
-                    })
-                    $(this).find("a").addClass("active")
-                    console.log([`scene-${$(this).attr("index")}`])
+                    // $("#scrollspy > ul > li").each(function() {
+                    //     $(this).find("a").removeClass("active")
+                    // })
+                    // $(this).find("a").addClass("active")
+                    // console.log([`scene-${$(this).attr("index")}`])
                     scroll([`scene-${$(this).attr("index")}`])
                 })
             })
@@ -133,7 +136,6 @@ $(document).keydown(function(e) {
     }
 });
 
-var scrollspy;
 
 // document.addEventListener('DOMContentLoaded', function() {
 //     var elems = document.querySelectorAll('.scrollspy');
@@ -145,29 +147,28 @@ var scrollspy;
 //     });
 //     scrollspy = instances
 // });
-window.addEventListener("scroll", function() {
-    var elementTarget = document.querySelectorAll(".scrollspy");
-    var elScrolledBy = []
-    elementTarget.forEach((el) => {
-        if (window.scrollY + ($(window).height() / 2) > (el.offsetTop + el.offsetHeight))
-            elScrolledBy.push(el);
+window.addEventListener("scroll", () => {
+    var elScrolledBy = [],
+        furthestScrollBy,
+        currentSceneText = 'scene 1'
 
+    $(".scrollspy").each(function () {
+        if (window.scrollY + ($(window).height() / 2) > ($(this).offset().top + $(this).height()))
+            elScrolledBy.push($(this));
     })
-    var furthestScrollBy
-        // this.console.log(elScrolledBy)
+
     elScrolledBy.forEach((el) => {
         if (furthestScrollBy == undefined) {
-            furthestScrollBy = el
-        } else if (parseInt(el.getAttribute('id'), 10) >= parseInt(furthestScrollBy.getAttribute('id'), 10)) {
-            furthestScrollBy = el
+            furthestScrollBy = $(el)
+        } else if (parseInt($(el).attr("id"), 10) >= parseInt(furthestScrollBy.attr("id"), 10)) {
+            furthestScrollBy = $(el)
         };
     })
 
-    var currentSceneText = 'scene 1'
-    if (furthestScrollBy != undefined) {
-        console.dir(furthestScrollBy)
+    if (furthestScrollBy) {
         currentSceneText = $(furthestScrollBy).first().text()
     }
-
+    $("a.active").removeClass("active")
+    $(`li[value="${currentSceneText}"`).find("a").addClass("active")
     $("#currentSceneText").text(currentSceneText)
 });

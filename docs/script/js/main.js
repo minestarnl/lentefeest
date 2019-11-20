@@ -19,28 +19,28 @@ $(async() => {
     // location.hash == "#embed"
     if (location.hash == "#embed") $(".navbar-fixed").hide(), $("body").attr("embed", "true")
     if (location.hash == "#mobile" || $(window).width() < 900) $("body").attr("mobile", "true")
-    $(".c24 p").each(function(poep) {
-        $(this).attr("id", poep)
-        if (!$(this).is(".title")) $(this).click(scrollTo);
-    })
     $(".c26").each(function(index) {
         $(this).attr("id", `scene-${index}`)
+        // $(this).addClass("c24")
         if ($(this).text() != "") {
             var text = $(this).text()
             $(this).text(text.substring(0, text.indexOf(text.match(/\d+/) )) + text.match(/\d+/)[0])
             $("#scrollspy > ul").append(`<li index="${index}"><a>${$(this).text()}</a></li>`)
-            $("#scrollspy > ul > li").each(function() {
-                $(this).attr("value", $(this).text())
-                $(this).click(function() {
-                    // $("#scrollspy > ul > li").each(function() {
-                    //     $(this).find("a").removeClass("active")
-                    // })
-                    // $(this).find("a").addClass("active")
-                    // console.log([`scene-${$(this).attr("index")}`])
-                    scroll([`scene-${$(this).attr("index")}`])
-                })
-            })
         }
+    })
+    $("#scrollspy > ul > li").each(function() {
+        $(this).attr("value", $(this).text())
+        $(this).click(function() {
+            // $("#scrollspy > ul > li").each(function() {
+            //     $(this).find("a").removeClass("active")
+            // })
+            // $(this).find("a").addClass("active")
+            scroll([$(`#scene-${$(this).attr("index")}`).parent().attr("id")], true)
+        })
+    })
+    $(".c24 p").each(function(poep) {
+        $(this).attr("id", poep)
+        if (!$(this).is(".title")) $(this).click(scrollTo);
     })
     if (localStorage.getItem("theme") == "dark") $("body").attr("theme", "dark")
 })
@@ -72,15 +72,17 @@ function scrollTo() {
     }
     var elems = elems_after.concat(elems_before)
     if (elems.length == 0) return
+    elems = filter_array(elems)
+    console.log(elems)
     firebase.database().ref('scroll').set(elems)
 }
 
-function scroll(val) {
+function scroll(val, scene) {
     if (!loaded) {
         $("#overlay").hide()
         loaded = true
     }
-    var topMargin = val[0].startsWith("scene-") ? 100 : 200
+    var topMargin = scene ? 100 : 200
     elems = val
     assignSelector()
     $(".c24 .selected").removeClass("selected")
@@ -172,3 +174,20 @@ window.addEventListener("scroll", () => {
     $(`li[value="${currentSceneText}"`).find("a").addClass("active")
     $("#currentSceneText").text(currentSceneText)
 });
+
+function filter_array(test_array) {
+    var index = -1,
+        arr_length = test_array ? test_array.length : 0,
+        resIndex = -1,
+        result = [];
+
+    while (++index < arr_length) {
+        var value = test_array[index];
+
+        if (value) {
+            result[++resIndex] = value;
+        }
+    }
+
+    return result;
+}

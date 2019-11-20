@@ -100,8 +100,7 @@ body[embed="true"] .c19 {
     color: black !important;
 }
 
-
-body[embed="true"] #scrollspy {
+body[embed="true"] #scrollspy, body[embed="true"] .fixed-action-btn {
     display: none !important;
 }
 

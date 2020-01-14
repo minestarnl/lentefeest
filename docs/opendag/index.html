@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Lentefeest Music Player</title>
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="styles/materialize.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="styles/main.min.css">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon.png">
+</head>
+
+<body>
+    <audio id="player" controls>
+        <!-- 2014 -->
+        <source id="mp3_src" src="Dans/Dans/Dans 2014/LF 14 Laag 2 Rockmix.mp3" type="audio/mp3" />
+        Jouw browser ondersteund geen Muziek :(
+    </audio>
+
+    <div id="app">
+        <nav>
+            <div class="nav-wrapper purple darken-4">
+                <a class="brand-logo center modal-trigger" data-target="credits" href="#credits">Lentefeest</a>
+                <ul id="nav-mobile" class="right">
+                    <li><a href="/script"><i class="material-icons white-text">description</i></a>
+                    </li>
+                    <li><a href="/"><i class="material-icons white-text">tv</i></a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+
+
+        <ul id="songsListings" class="collapsible popout accordion">
+            <noscript>
+                Please enable javascript to work
+            </noscript>
+        </ul>
+
+
+        <div class="playerControls" style="display: none">
+            <i class="material-icons circle purple darken-4" onclick="playPause()">play_arrow</i>
+
+            <form action="#" class="progress-bar-spent">
+                <p class="range-field">
+                    <input type="range" id="test5" min="0" max="100" />
+                </p>
+            </form>
+
+            <div class="length">
+                <span class="length-spent">0:00</span> / <span class="length-total">0:00</span>
+            </div>
+        </div>
+
+        <div id="log"></div>
+    </div>
+
+    <!-- Modal Structure -->
+    <div id="credits" class="modal mybg">
+        <div class="modal-content">
+            <h4>About</h4>
+            <p>This is an website to listen to all the Kaj Munk College lentefeest music from the past years</p>
+            <p>Made by: <a href="https://github.com/minestarnl">Bram Koene</a></p>
+            <p>Design by: <a href="https://netlob.app/">Netlob</a> en <a href="https://materializecss.com/">Materialize
+                    css</a></p>
+        </div>
+        <div class="modal-footer mybg">
+            <a href="#!" class="modal-close waves-effect waves-green btn-flat white-text">Close</a>
+        </div>
+    </div>
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/generator.js"></script>
+    <script src="js/playercontrols.js"></script>
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-152630374-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+
+        gtag('config', 'UA-152630374-1');
+    </script>
+</body>
+
+</html>

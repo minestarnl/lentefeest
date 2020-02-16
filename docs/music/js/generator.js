@@ -103,15 +103,23 @@ var y2014 = new Year(2014)
     .addSong(new Song(`Dans/Dans/Dans 2019/Dans 1 INGEKORT.mp3`, 2019, 'Dans 1 MLF INGEKORT', 1.5))
     .addSong(new Song(`Dans/Dans/Dans 2019/Dans 2 INGEKORT.mp3`, 2019, 'Dans 2 MLF INGEKORT', 2.5))
     .addSong(new Song(`Dans/Dans/Dans 2019/Dans 3 MLF 1920.mp3`, 2019, 'Dans 3 MLF', 3.5))
-    .addSong(new Song(`Dans/Dans/Dans 2019/Dans 1 LF 1819.mp3`, 2019, 'Dans 1 LF', 1))
-    .addSong(new Song(`Dans/Dans/Dans 2019/Dans 2 LF 1819.mp3`, 2019, 'Dans 2 LF', 2))
-    .addSong(new Song(`Dans/Dans/Dans 2019/Dans 3 LF 1819.mp3`, 2019, 'Dans 3 LF', 3))
-    .addSong(new Song(`Dans/Dans/Dans 2019/Dans 4 LF 1819.mp3`, 2019, 'Dans 4 LF', 4))
-    .addSong(new Song(`Dans/Dans/Dans 2019/Dans 5 LF 1819.mp3`, 2019, 'Dans 5 LF', 5))
-    .addSong(new Song(`Dans/Dans/Dans 2019/Docenten LF 1819.mp3`, 2019, 'DD Pyjama party', 6))
+    .addSong(new Song(`Dans/Dans/Dans 2019/Dans 1 LF 1819.mp3`, 2019, 'Dans 1 LF 2019', 1))
+    .addSong(new Song(`Dans/Dans/Dans 2019/Dans 2 LF 1819.mp3`, 2019, 'Dans 2 LF 2019', 2))
+    .addSong(new Song(`Dans/Dans/Dans 2019/Dans 3 LF 1819.mp3`, 2019, 'Dans 3 LF 2019', 3))
+    .addSong(new Song(`Dans/Dans/Dans 2019/Dans 4 LF 1819.mp3`, 2019, 'Dans 4 LF 2019', 4))
+    .addSong(new Song(`Dans/Dans/Dans 2019/Dans 5 LF 1819.mp3`, 2019, 'Dans 5 LF 2019', 5))
+    .addSong(new Song(`Dans/Dans/Dans 2019/Docenten LF 1819.mp3`, 2019, 'DD Pyjama party 2019', 6)),
+
+    y2020 = new Year(2020)
+    .addSong(new Song(`Dans/Dans/Dans 2020/LF 1920 Dans 1.mp3`, 2020, 'Dans 1 LF 2020', 1))
+    .addSong(new Song(`Dans/Dans/Dans 2020/LF 1920 Dans 2.mp3`, 2020, 'Dans 2 LF 2020', 2))
+    .addSong(new Song(`Dans/Dans/Dans 2020/LF 1920 Dans 3.mp3`, 2020, 'Dans 3 LF 2020', 3))
+    .addSong(new Song(`Dans/Dans/Dans 2020/LF 1920 Dans 4.mp3`, 2020, 'Dans 4 LF 2020', 4))
+    .addSong(new Song(`Dans/Dans/Dans 2020/LF 1920 Dans 5.mp3`, 2020, 'Dans 5 LF 2020', 5))
+    .addSong(new Song(`Dans/Dans/Dans 2020/LF 1920 Docentendans.mp3`, 2020, 'DD 2020', 6))
 
 var years = [
-    y2019, y2018, y2017MLF, y2017, y2016, y2015, y2014,
+    y2020, y2019, y2018, y2017MLF, y2017, y2016, y2015, y2014,
 ]
 
 function generateAllHTML() {

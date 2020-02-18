@@ -5,10 +5,9 @@ player.addEventListener('ended', function() {
 
 player.preload = 'auto'
 
-function change(sourceUrl, name) {
+function change(sourceUrl) {
     player.pause();
     $("#mp3_src").attr("src", sourceUrl);
-    $("#mp3_src").attr("title", name);
     /****************/
     player.load(); //suspends and restores all audio element
 

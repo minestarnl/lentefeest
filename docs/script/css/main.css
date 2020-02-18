@@ -1,3 +1,5 @@
+@import url('https://themes.googleusercontent.com/fonts/css?kit=fpjTOVmNbO4Lz34iLyptLUXza5VhXqVC6o75Eld_V98');
+
 #currentScene {
     margin-left: 1rem;
     font-weight: bold;
@@ -258,15 +260,6 @@ table th {
     font-style: normal
 }
 
-.c38 {
-    color: #000000;
-    font-weight: 400;
-    text-decoration: none;
-    vertical-align: baseline;
-    font-size: 72pt;
-    /* font-family: "Calibri"; */
-font-style: normal
-}
 
 .c8 {
     color: #000000;
@@ -278,15 +271,6 @@ font-style: normal
     font-style: normal
 }
 
-.c2 {
-    /* background-color: #ffffff; */
-    padding-top: 0pt;
-    padding-bottom: 0pt;
-    line-height: 1.0;
-    orphans: 2;
-    widows: 2;
-    text-align: left
-}
 
 .c6 {
     padding-top: 0pt;
@@ -404,16 +388,6 @@ font-style: normal
     text-decoration: none;
     vertical-align: baseline;
     font-size: 11pt
-}
-
-@media only screen and (min-width: 600px) {
-    .c24 {
-        background-color: #ffffff;
-        width: 60rem !important;
-        /* padding: 70.8pt 70.8pt 70.8pt 70.8pt; */
-        margin-top: 10px;
-        margin-left: calc(50vw - 30rem);
-    }
 }
 
 .c12 {
@@ -610,26 +584,26 @@ h6 {
     text-align: left
 }
 
-*/ @media only screen and (max-width: 600px) {
+/*  @media only screen and (max-width: 600px) {
     body[embed="true"] {
         width: calc(100vw - 30px) !important;
         padding: 0 !important;
         margin: 0 !important;
-        /* overflow: hidden !important; */
+        /* overflow: hidden !important; 
     }
 
     body[embed="true"] .c24 {
         /* background-color: transparent !important; */
-        width: calc(100vw - 30px) !important;
-        padding: 0 !important;
-        margin: 20px !important;
-        /* overflow: hidden !important; */
+/* width: calc(100vw - 30px) !important;
+padding: 0 !important;
+margin: 20px !important; */
+/* overflow: hidden !important; 
     }
 
     #currentScene {
         display: none !important;
     }
-}
+} */
 
 .lst-kix_list_1-3>li:before {
     content: "\0025cf  "

@@ -8,7 +8,7 @@ player.preload = 'auto'
 function change(source) {
     console.log(source)
     player.pause();
-    $("#mp3_src").attr("src", source.link);
+    $("#mp3_src").attr("src", source);
 
     /****************/
     player.load(); //suspends and restores all audio element
@@ -20,8 +20,8 @@ function change(source) {
     changeTimes(player.duration)
 }
 
-function changeTitle(title) {
-    $("#player").attr('title', title)
+function changeTitle(song) {
+    $("#player").attr('title', song)
 }
 
 $(document).ready(function () {

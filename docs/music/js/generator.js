@@ -2,28 +2,29 @@
 
 function song(songa) {
     return `
-    <li class="collection-item avatar waves-effect waves-light song remove-border" onclick="change('${songa.link}'); changeTitle=('${songa.name}')">
+<li class="collection-item avatar waves-effect waves-light song remove-border"
+    onclick="change('${songa.link}');changeTitle('${songa.name}')">
     <i class="material-icons circle purple darken-4">play_arrow</i>
     <span class="title"><b>${songa.name}</b></span>
     <p>Lentefeest ${songa.year}<br><i> Dans ${songa.number}</i>
     </p>
-    </li>
+</li>
 `
 }
 
 var section = (Year) => {
     return `<ul id="songsListings" class="collapsible popout">
-        <li class="remove-border">
-            <div class="collapsible-header remove-border"><i class="material-icons">date_range</i>${Year.year}</div>
-            <div class="collapsible-body remove-border">
-                <ul class="collection">
-                    <!-- add a song -->
-                    ${getSongs(Year)}
-                </ul>
-            </div>
-        </li>
-    </ul>
-    `
+    <li class="remove-border">
+        <div class="collapsible-header remove-border"><i class="material-icons">date_range</i>${Year.year}</div>
+        <div class="collapsible-body remove-border">
+            <ul class="collection">
+                <!-- add a song -->
+                ${getSongs(Year)}
+            </ul>
+        </div>
+    </li>
+</ul>
+`
 }
 
 const getSongs = (Year) => {

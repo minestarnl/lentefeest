@@ -42,7 +42,7 @@ $(async () => {
     if (localStorage.getItem("theme") == "dark") $("body").attr("theme", "dark")
     if (location.hash == "#embed") $(".navbar-fixed").hide(), $("body").attr("embed", "true") //   These attributes are read by the CSS
     if (location.hash == "#mobile" || $(window).width() < 900) $("body").attr("mobile", "true") // and will hide/show some elements
-    $(".c26").each(function (index) {
+    $(".c2").each(function (index) {
         $(this).attr("id", `scene-${index}`)
         if ($(this).text()) {
             var text = $(this).text()

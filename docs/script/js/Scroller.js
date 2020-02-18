@@ -21,13 +21,13 @@ class Scroll {
         if (location.hash == "#embed" || $(this).text() == "") return
         var elems_after = [$(this).attr("id")]
         for (var i = 1; i < 100; i++) {
-            if ($(`#${(elems_after[i-1])}`).next().hasClass("c5") || $(`#${(elems_after[i-1])}`).next().hasClass("c3")) break
+            if ($(`#${(elems_after[i-1])}`).next().hasClass("c2")) break
             elems_after.push($(`#${(elems_after[i-1])}`).next().attr("id"))
         }
         elems_after = elems_after.splice(1, 1)
         var elems_before = [$(this).attr("id")]
         for (var i = 1; i < 100; i++) {
-            if ($(`#${(elems_before[i-1])}`).prev().hasClass("c5") || $(`#${(elems_before[i-1])}`).prev().hasClass("c3")) break
+            if ($(`#${(elems_before[i-1])}`).prev().hasClass("c2")) break
             elems_before.push($(`#${(elems_before[i-1])}`).prev().attr("id"))
         }
         this.elems = await filter_array(elems_after.concat(elems_before))

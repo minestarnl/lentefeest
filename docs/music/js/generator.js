@@ -2,7 +2,7 @@
 
 function song(songa) {
     return `
-    <li class="collection-item avatar waves-effect waves-light song remove-border" onclick="change('${songa.link}, ${songa.title}')">
+    <li class="collection-item avatar waves-effect waves-light song remove-border" onclick="change('${songa.link}'); changeTitle=('${songa.name}')">
     <i class="material-icons circle purple darken-4">play_arrow</i>
     <span class="title"><b>${songa.name}</b></span>
     <p>Lentefeest ${songa.year}<br><i> Dans ${songa.number}</i>

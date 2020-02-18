@@ -1,15 +1,16 @@
 var player = document.querySelector("#player")
-player.addEventListener('ended', function() {
+player.addEventListener('ended', function () {
     player.pause();
 });
 
 player.preload = 'auto'
 
-function change(sourceUrl, title) {
+function change(source) {
+    console.log(source)
     player.pause();
-    $("#mp3_src").attr("src", sourceUrl);
-    $("#player").attr('title', title)
-        /****************/
+    $("#mp3_src").attr("src", source.link);
+
+    /****************/
     player.load(); //suspends and restores all audio element
 
     //player.play(); changed based on Sprachprofi's comment below
@@ -19,7 +20,11 @@ function change(sourceUrl, title) {
     changeTimes(player.duration)
 }
 
-$(document).ready(function() {
+function changeTitle(title) {
+    $("#player").attr('title', title)
+}
+
+$(document).ready(function () {
     $('.collapsible').collapsible();
     $('.modal').modal();
 });
@@ -27,7 +32,7 @@ $(document).ready(function() {
 if (window.location.hash == '#dev') {
     var old = console.log;
     var logger = document.getElementById('log');
-    console.log = function(message) {
+    console.log = function (message) {
         if (typeof message == 'object') {
             logger.innerHTML += (JSON && JSON.stringify ? JSON.stringify(message) : message) + '<br />';
         } else {

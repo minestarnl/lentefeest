@@ -17,7 +17,7 @@ class Scroll {
     /**
      * All element tags that change depending on the script
      */
-    sceneTag = 'c4';
+    sceneTag = 'c1';
 
 
     /**
@@ -27,13 +27,13 @@ class Scroll {
         if (location.hash == "#embed" || $(this).text() == "") return
         var elems_after = [$(this).attr("id")]
         for (var i = 1; i < 100; i++) {
-            if ($(`#${(elems_after[i-1])}`).next().hasClass("c2")) break
+            if ($(`#${(elems_after[i-1])}`).next().hasClass("c4")) break
             elems_after.push($(`#${(elems_after[i-1])}`).next().attr("id"))
         }
         elems_after = elems_after.splice(1, 1)
         var elems_before = [$(this).attr("id")]
         for (var i = 1; i < 100; i++) {
-            if ($(`#${(elems_before[i-1])}`).prev().hasClass("c2")) break
+            if ($(`#${(elems_before[i-1])}`).prev().hasClass("c4")) break
             elems_before.push($(`#${(elems_before[i-1])}`).prev().attr("id"))
         }
         this.elems = await filter_array(elems_after.concat(elems_before))
@@ -120,7 +120,7 @@ class Scroll {
             currentSceneText = 'scene 1'
 
         $("." + this.sceneTag).each(function () {
-            if ($(this).text() != "" && $(this).text().indexOf("Scene") >= 0) {
+            if ($(this).text() != "" && $(this).text().indexOf("Scene") >= 0 && $(this).text().indexOf("Licht Scene") < 0 && $(this).text().indexOf("Fade naar Scene 7") < 0) {
                 if (window.scrollY + ($(window).height() / 2) > ($(this).offset().top + $(this).height()))
                     elScrolledBy.push($(this))
             }

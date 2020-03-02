@@ -15,6 +15,12 @@ class Scroll {
     }
 
     /**
+     * All element tags that change depending on the script
+     */
+    sceneTag = 'c4';
+
+
+    /**
      * @description This function is executed when a user clicks (using arrowkeys/space also counts as click) on a script sentence. It calculates which other sentences belong to the selected one and then pushes an array of line indexxes to the realtime firebase database
      */
     async scrollTo() {
@@ -113,8 +119,8 @@ class Scroll {
         var elScrolledBy = [],
             currentSceneText = 'scene 1'
 
-        $(".c26").each(function () {
-            if ($(this).text() != "") {
+        $("." + this.sceneTag).each(function () {
+            if ($(this).text() != "" && $(this).text().indexOf("Scene") >= 0) {
                 if (window.scrollY + ($(window).height() / 2) > ($(this).offset().top + $(this).height()))
                     elScrolledBy.push($(this))
             }

@@ -21,7 +21,7 @@ database.ref('confetti').on('value', snapshot => {
 /**
  * @description This function is executed when a change occurs in the exclude reference of the database, and will toggle the exclude class on the given indexxes.
  */
-database.ref('exclude').on('value', function (snapshot) {
+database.ref('exclude').on('value', function(snapshot) {
     $(".exclude").removeClass("exclude")
     snapshot.val().forEach(exclude => {
         $(`#${exclude}`).addClass("exclude")
@@ -38,11 +38,11 @@ firebase.auth().onAuthStateChanged((user) => {
 /**
  * @description This block of code is executed when jQuery is successvully initialized and will give every line a unique index, and will also handle the click events (on the lines and on the scrollspy) 
  */
-$(async () => {
+$(async() => {
     if (localStorage.getItem("theme") == "dark") $("body").attr("theme", "dark")
     if (location.hash == "#embed") $(".navbar-fixed").hide(), $("body").attr("embed", "true") //   These attributes are read by the CSS
     if (location.hash == "#mobile" || $(window).width() < 900) $("body").attr("mobile", "true") // and will hide/show some elements
-    $(".c4").each(function (index) {
+    $(".c4").each(function(index) {
         $(this).attr("id", `scene-${index}`)
         if ($(this).text()) {
             var text = $(this).text()
@@ -50,11 +50,11 @@ $(async () => {
             $("#scrollspy > ul").append(`<li index="${index}"><a>${$(this).text()}</a></li>`)
         }
     })
-    $("#scrollspy > ul > li").each(function () {
+    $("#scrollspy > ul > li").each(function() {
         $(this).attr("value", $(this).text())
         $(this).click(() => Scroller.scroll([$(`#scene-${$(this).attr("index")}`).parent().attr("id")], true))
     })
-    $(".c24 p").each(function (index) {
+    $(".c24 p").each(function(index) {
         $(this).attr("id", index)
         if (!$(this).is(".title")) $(this).click(Scroller.scrollTo);
     })
@@ -62,9 +62,9 @@ $(async () => {
 })
 
 const
-    /**
-     * @description This function will prompt a password and tries to login with that given password into the superuser account on the firebase authentication server.
-     */
+/**
+ * @description This function will prompt a password and tries to login with that given password into the superuser account on the firebase authentication server.
+ */
     login = () => {
         firebase.auth().signInWithEmailAndPassword('superuser@lentefeest.ga', prompt("Wat is de geheime code niffo")).catch(() => alert("HA REKT IS FOUT"))
     },
@@ -85,3 +85,11 @@ const
     }
 
 $(window).on('resize', Scroller.assignSelector).keydown(Scroller.onKeydown).scroll(Scroller.onScroll);
+
+$('body > div.c24').children().each(function(i) {
+    $(this).click(setComment);
+})
+
+function setComment(f) {
+    console.log(f)
+}

@@ -395,7 +395,7 @@ table th {
 }
 
 .c11 {
-    background-color: #ff00ff;
+    /* background-color: #ff00ff; */
     font-family: "Arial";
     font-weight: 700
 }
@@ -460,7 +460,7 @@ table th {
 }
 
 .c15 {
-    background-color: #ff00ff
+    /* background-color: #ff00ff */
 }
 
 .c29 {
@@ -617,7 +617,6 @@ h6 {
         margin: 0 !important;
         /* overflow: hidden !important; */
     }
-
     body[embed="true"] .c24 {
         /* background-color: transparent !important; */
         width: calc(100vw - 30px) !important;
@@ -625,8 +624,11 @@ h6 {
         margin: 20px !important;
         /* overflow: hidden !important; */
     }
-
     #currentScene {
         display: none !important;
     }
+}
+
+:target {
+    display: block
 }

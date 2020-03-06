@@ -32,7 +32,7 @@ database.ref('exclude').on('value', function(snapshot) {
  * @description This function is executed when a the user is either logged in or did a false attempt to login. It only toggles styles and does not take care of any real database rights since that is handled on the server. No hackerbois!! ;)
  */
 firebase.auth().onAuthStateChanged((user) => {
-    if (user && user.email == 'superuser@lentefeest.ga') $("body").attr("loggedin", "true")
+    if (user && (user.email == 'superuser@lentefeest.ga' || user.email == 'av@kajmunk.nl')) $("body").attr("loggedin", "true")
 });
 
 /**

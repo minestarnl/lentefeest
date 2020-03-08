@@ -6,7 +6,7 @@ var test;
 var lastCommendClicked = {};
 var commentBoxOpen = false;
 
-$('#nav-mobile > li.tooltipped').hide();
+$('#nav-mobile > li:nth-child(3)').hide();
 $('.commentModeIndicator').hide();
 
 function editMode() {
@@ -28,9 +28,6 @@ $(document).ready(() => {
         });
         comments = snapshot.val()
     });
-    if (commentGroup != 'Selecteer group') {
-        $('#nav-mobile > li.tooltipped').show();
-    }
 })
 
 function saveCommentPreferences() {
@@ -47,6 +44,8 @@ function saveCommentPreferences() {
             comments = snapshot.val()
         });
         $('#nav-mobile > li.tooltipped').show();
+        $('#nav-mobile > li:nth-child(3)').show();
+
     } else {
         $('#nav-mobile > li.tooltipped').hide();
     }
@@ -73,10 +72,8 @@ function saveComment() {
     var height = lastCommendClicked.height;
     var text = $('#commentInput').val();
     $('#commentInput').val('')
-    if (text != '') {
-        if (comments == null) {
-            comments = []
-        }
+    if (text) {
+        if (!comments) comments = []
 
         var comment = {
             height: height,
@@ -114,4 +111,21 @@ if (commentGroup != null) {
 
 commentRef.on('value', function(snapshot) {
     comments = snapshot.val()
+});
+
+firebase.auth().onAuthStateChanged(function(user) {
+    if (user) {
+        // User is signed in.
+        // ...
+        if (commentGroup != 'Selecteer group' && commentGroup) {
+            $('#nav-mobile > li:nth-child(3)').show();
+        }
+
+        $('#commentModalButton').show()
+
+    } else {
+        // User is signed out.
+        // ...
+        $('#commentModalButton').hide()
+    }
 });

@@ -651,6 +651,8 @@ h6 {
     padding-bottom: 7px;
     border-radius: 10%;
     max-width: 20%;
+    background-color: #aaaaaa;
+    color: black !important;
 }
 
 .commentModeIndicator {

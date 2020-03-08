@@ -86,10 +86,3 @@ const
 
 $(window).on('resize', Scroller.assignSelector).keydown(Scroller.onKeydown).scroll(Scroller.onScroll);
 
-$('body > div.c24').children().each(function(i) {
-    $(this).click(setComment);
-})
-
-function setComment(f) {
-    console.log(f)
-}

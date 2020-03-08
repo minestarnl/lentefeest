@@ -1,0 +1,147 @@
+<html>
+
+<head>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link rel="stylesheet" href="./css/main.min.css">
+    <title>Lentefeest Admin Panel</title>
+    <style>
+        /* draggable targets */
+        
+        [data-draggable="target"] {
+            text-align: center;
+            list-style-type: none;
+            width: 90%;
+            max-height: 20em;
+            overflow-y: auto;
+            margin: 0 0.5em 0.5em 0;
+            padding: 0.2em;
+            border: 2px solid #888;
+            border-radius: 0.2em;
+            background: #ddd;
+            color: #555;
+        }
+        /* draggable items */
+        
+        [data-draggable="item"] {
+            display: block;
+            list-style-type: none;
+            margin: 0 0 2px 0;
+            padding: 0.2em 0.4em;
+            border-radius: 0.2em;
+            line-height: 1.3;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="main">
+        <nav>
+            <div class="nav-wrapper">
+                <a href="#!" class="brand-logo">Lenteest admin</a>
+                <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+                <ul class="right hide-on-med-and-down">
+                    <li><a href="../">link</a></li>
+                </ul>
+            </div>
+        </nav>
+
+        <ul class="sidenav" id="mobile-demo">
+            <li><a href="../">link</a></li>
+        </ul>
+
+        <div id="video-link-page">
+            <center>
+                <h3 class="responsive-img indigo-text">Gebruikers</h3>
+                <div class="section"></div>
+
+                <div id="objects">
+                    <ol data-draggable="target" id="video">
+                        <h5>Video</h5>
+                        <br>
+                        <li data-draggable="item">Item 0</li>
+                        <li data-draggable="item">Item 1</li>
+                        <li data-draggable="item">Item 2</li>
+                        <li data-draggable="item">Item 3</li>
+                    </ol>
+
+                    <ol data-draggable="target" id="geluid">
+                        <h5>Geluid/Licht</h5>
+                        <br>
+                        <li data-draggable="item">Item 4</li>
+                        <li data-draggable="item">Item 5</li>
+                    </ol>
+
+                    <ol data-draggable="target" id="decor">
+                        <h5>Decor</h5>
+                        <br>
+                        <li data-draggable="item">Item 6</li>
+                        <li data-draggable="item">Item 7</li>
+                    </ol>
+
+                    <ol data-draggable="target" id="toneel">
+                        <h5>Toneel</h5>
+                        <br>
+                        <li data-draggable="item">Item 8</li>
+                    </ol>
+
+                    <ol data-draggable="target" id="dans">
+                        <h5>Dans</h5>
+                        <br>
+                        <li data-draggable="item">Item 8</li>
+                    </ol>
+
+                    <ol data-draggable="target" id="new">
+                        <h5>Nieuw</h5>
+                        <br>
+                        <li data-draggable="item">Item 8</li>
+                    </ol>
+
+                </div>
+        </div>
+        </center>
+
+    </div>
+
+    <div id="stat">
+
+    </div>
+
+    </div>
+
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.1/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js">
+    </script>
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/7.9.3/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.9.3/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.9.3/firebase-database.js"></script>
+
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+
+    <script>
+        // Your web app's Firebase configuration
+        var firebaseConfig = {
+            apiKey: "AIzaSyAw3s_o7PxKheElgBplWnsKNlT5cSQE6uw",
+            authDomain: "lentefeestapp.firebaseapp.com",
+            databaseURL: "https://lentefeestapp.firebaseio.com",
+            projectId: "lentefeestapp",
+            storageBucket: "lentefeestapp.appspot.com",
+            messagingSenderId: "73713534571",
+            appId: "1:73713534571:web:a911590c680d92bc97932e"
+        };
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+    </script>
+
+    <script src="./js/main.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            $('.sidenav').sidenav();
+        });
+    </script>
+</body>
+
+</html>

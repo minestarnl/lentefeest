@@ -17,7 +17,7 @@ class Scroll {
     /**
      * All element tags that change depending on the script
      */
-    sceneTag = 'c1';
+    sceneTag = 'c0';
 
 
     /**
@@ -28,13 +28,13 @@ class Scroll {
             if (location.hash == "#embed" || $(this).text() == "") return
             var elems_after = [$(this).attr("id")]
             for (var i = 1; i < 100; i++) {
-                if ($(`#${(elems_after[i-1])}`).next().hasClass("c4")) break
+                if ($(`#${(elems_after[i-1])}`).next().hasClass("c5")) break
                 elems_after.push($(`#${(elems_after[i-1])}`).next().attr("id"))
             }
             elems_after = elems_after.splice(1, 1)
             var elems_before = [$(this).attr("id")]
             for (var i = 1; i < 100; i++) {
-                if ($(`#${(elems_before[i-1])}`).prev().hasClass("c4")) break
+                if ($(`#${(elems_before[i-1])}`).prev().hasClass("c5")) break
                 elems_before.push($(`#${(elems_before[i-1])}`).prev().attr("id"))
             }
             this.elems = await filter_array(elems_after.concat(elems_before))
@@ -91,7 +91,7 @@ class Scroll {
      * @description This function is executed when any key is pressed on the page. It then filters for the arrow keys which will irritate thru the lines.
      */
     onKeydown = async(e) => {
-        if (commentBoxOpen = true) {} else if ([37, 38].includes(e.which)) {
+        if (M.Modal.getInstance($('#addCommentModal')).isOpen) {} else if ([37, 38].includes(e.which)) {
             e.preventDefault();
             for (var id = parseInt(this.elems[this.elems.length - 1]) - 1; id < parseInt(this.elems[this.elems.length - 1]) + 100; id--) {
                 if ($(`#${id}`).text() != "") {

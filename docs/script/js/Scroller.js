@@ -24,28 +24,30 @@ class Scroll {
      * @description This function is executed when a user clicks (using arrowkeys/space also counts as click) on a script sentence. It calculates which other sentences belong to the selected one and then pushes an array of line indexxes to the realtime firebase database
      */
     async scrollTo() {
-        if (location.hash == "#embed" || $(this).text() == "") return
-        var elems_after = [$(this).attr("id")]
-        for (var i = 1; i < 100; i++) {
-            if ($(`#${(elems_after[i-1])}`).next().hasClass("c4")) break
-            elems_after.push($(`#${(elems_after[i-1])}`).next().attr("id"))
+        if (!commentMode) {
+            if (location.hash == "#embed" || $(this).text() == "") return
+            var elems_after = [$(this).attr("id")]
+            for (var i = 1; i < 100; i++) {
+                if ($(`#${(elems_after[i-1])}`).next().hasClass("c4")) break
+                elems_after.push($(`#${(elems_after[i-1])}`).next().attr("id"))
+            }
+            elems_after = elems_after.splice(1, 1)
+            var elems_before = [$(this).attr("id")]
+            for (var i = 1; i < 100; i++) {
+                if ($(`#${(elems_before[i-1])}`).prev().hasClass("c4")) break
+                elems_before.push($(`#${(elems_before[i-1])}`).prev().attr("id"))
+            }
+            this.elems = await filter_array(elems_after.concat(elems_before))
+            if (this.elems.length == 0) return
+            firebase.database().ref('scroll').set(this.elems)
         }
-        elems_after = elems_after.splice(1, 1)
-        var elems_before = [$(this).attr("id")]
-        for (var i = 1; i < 100; i++) {
-            if ($(`#${(elems_before[i-1])}`).prev().hasClass("c4")) break
-            elems_before.push($(`#${(elems_before[i-1])}`).prev().attr("id"))
-        }
-        this.elems = await filter_array(elems_after.concat(elems_before))
-        if (this.elems.length == 0) return
-        firebase.database().ref('scroll').set(this.elems)
         return
     }
 
     /**
      * @description This function is executed when the database is updated, and will scroll to 300px above the first index (selected line). It will also call to assingSelector to move the purple bar to the selected portion.
      */
-    scroll = async (val, scene) => {
+    scroll = async(val, scene) => {
         if ($("#overlay").is(":visible")) $("#overlay").hide()
         this.topMargin = scene ? 100 : 200
         this.elems = val
@@ -68,14 +70,14 @@ class Scroll {
     /**
      * @description This function is executed when the FAB (floating action button) is pressed, and will (client side) scroll the user back to the current position.
      */
-    scrollTop = async () => {
+    scrollTop = async() => {
         this.scroll(this.elems)
     }
 
     /**
      * @description This function is executed by the scroll function and moves the purple bar to the current selected lines.
      */
-    assignSelector = async () => {
+    assignSelector = async() => {
         if (location.hash == "#mobile" || $(window).width() < 900) $("body").attr("mobile", "true")
         else $("body").attr("mobile", "false")
         var height = 0
@@ -88,8 +90,8 @@ class Scroll {
     /**
      * @description This function is executed when any key is pressed on the page. It then filters for the arrow keys which will irritate thru the lines.
      */
-    onKeydown = async (e) => {
-        if ([37, 38].includes(e.which)) {
+    onKeydown = async(e) => {
+        if (commentBoxOpen = true) {} else if ([37, 38].includes(e.which)) {
             e.preventDefault();
             for (var id = parseInt(this.elems[this.elems.length - 1]) - 1; id < parseInt(this.elems[this.elems.length - 1]) + 100; id--) {
                 if ($(`#${id}`).text() != "") {
@@ -111,15 +113,15 @@ class Scroll {
     /**
      * @description This function is executed when the scroll event is fired on the document. It will check which scene is currently visable in the window and set the scrollspy & little thinghy in the up-left corner to the current scene
      */
-    onScroll = async () => {
+    onScroll = async() => {
         if (this.elems.length == 0) return
-        // var y = (($(`#${elems[0]}`).offset().top - this.topMargin) - $(window).scrollTop())
-        // if ((y < -30 || y > 30)) $(".fixed-action-btn").show()
-        // else $(".fixed-action-btn").hide()
+            // var y = (($(`#${elems[0]}`).offset().top - this.topMargin) - $(window).scrollTop())
+            // if ((y < -30 || y > 30)) $(".fixed-action-btn").show()
+            // else $(".fixed-action-btn").hide()
         var elScrolledBy = [],
             currentSceneText = 'scene 1'
 
-        $("." + this.sceneTag).each(function () {
+        $("." + this.sceneTag).each(function() {
             if ($(this).text() != "" && $(this).text().indexOf("Scene") >= 0 && $(this).text().indexOf("Licht Scene") < 0 && $(this).text().indexOf("Fade naar Scene 7") < 0) {
                 if (window.scrollY + ($(window).height() / 2) > ($(this).offset().top + $(this).height()))
                     elScrolledBy.push($(this))
@@ -137,7 +139,7 @@ class Scroll {
  * @private
  * @description This function is currently only executed by the scrollTo function, and will remove any empty, null, undefined or false items from the given array (note: its async so an await on the call is required!)
  */
-const filter_array = async (test_array) => {
+const filter_array = async(test_array) => {
     var index = -1,
         arr_length = test_array ? test_array.length : 0,
         resIndex = -1,

@@ -59,6 +59,16 @@ body[theme="dark"] p {
     color: #a9a9a9 !important;
 }
 
+body[theme="dark"] .comment {
+    background-color: #3f3f3f;
+    color: white !important;
+}
+
+body[theme="light"] .comment {
+    background-color: #aaaaaa;
+    color: black !important;
+}
+
 * {
     user-select: none;
     transition: text 400ms;
@@ -633,13 +643,16 @@ h6 {
     display: block
 }
 
-.comment{
+.comment {
     right: 80px;
     position: absolute;
     padding: 10px;
     padding-top: 7px;
     padding-bottom: 7px;
     border-radius: 10%;
-    background-color: #3f3f3f;
-    color: white;
+    max-width: 20%;
+}
+
+.commentModeIndicator {
+    position: fixed !important;
 }
